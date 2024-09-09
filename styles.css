@@ -1,0 +1,51 @@
+body {
+    background-color: #0b1132 !important;
+    color: white;
+}
+.maindiv {
+    border-radius: 10px;
+    background-color: #0b1132 !important;
+}
+.navbar {
+    display: flex !important;
+    justify-content: space-between !important;
+    border-radius: 10px;
+}
+.nav-color {
+    background-color: #20C997 !important;
+    
+}
+
+.btn-nav-color {
+    color: black;
+    border-color: black;
+    border-width: 1.5px;
+}
+
+.btn-nav-color:hover {
+    color: white;
+    background-color: black;
+    border-color: black;
+}
+
+.form-color {
+    background-color: #ffffff !important;
+    color: black;
+}
+
+.container-post {
+    background-color: grey !important;
+    border-radius: 10px;
+}
+
+
+.container-color {
+    background-color: #0b1132 !important;
+}
+
+
+.container-post {
+    text-align: center; /* Centraliza a imagem e os textos */
+  }
+
+
