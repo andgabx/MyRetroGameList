@@ -11,7 +11,7 @@ class Game(models.Model):
     like_count = models.PositiveIntegerField(default=0)  # Número de likes (preferências)
     to_play_count = models.PositiveIntegerField(default=0)  # Número de vezes que foi adicionado à lista "Quero Jogar"
     already_played_count = models.PositiveIntegerField(default=0)  # Número de vezes que foi adicionado à lista "Já Joguei"
-    image_url = models.TextField(default="Undefined")
+    image = models.ImageField(upload_to='games/', default='Undefined.jpg')
     
 
     def __str__(self):

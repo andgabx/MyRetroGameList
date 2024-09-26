@@ -22,7 +22,7 @@
             {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
-                        <li class="text-white bg-red-500 p-2 rounded my-2{% if message.tags %} {{ message.tags }}{% endif %}">
+                        <li class="tracking-wide text-lg text-[#F9E300] font-bold text-center p-2 rounded my-2{% if message.tags %} {{ message.tags }}{% endif %}">
                             {{ message }}
                         </li>
                     {% endfor %}
