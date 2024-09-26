@@ -1,0 +1,72 @@
+[
+  {
+    "model": "frontend.game",
+    "pk": 1,
+    "fields": {
+      "title": "Elden Ring",
+      "genre": "Melhor",
+      "description": "Um jogo fuderoso.",
+      "release_date": "2023-01-01",
+      "like_count": 0,
+      "to_play_count": 5000000,
+      "already_played_count": 6,
+      "image_url": "https://cdn-icons-png.flaticon.com/256/1077/1077114.png"
+    }
+  },
+  {
+    "model": "frontend.game",
+    "pk": 2,
+    "fields": {
+      "title": "Elden Ring",
+      "genre": "Melhor",
+      "description": "Um jogo fuderoso.",
+      "release_date": "2023-01-01",
+      "like_count": 0,
+      "to_play_count": 5000000,
+      "already_played_count": 6,
+      "image_url": "https://cdn-icons-png.flaticon.com/256/1077/1077114.png"
+    }
+  },
+  {
+    "model": "frontend.game",
+    "pk": 3,
+    "fields": {
+      "title": "Elden Ring",
+      "genre": "Melhor",
+      "description": "Um jogo fuderoso.",
+      "release_date": "2023-01-01",
+      "like_count": 0,
+      "to_play_count": 5000000,
+      "already_played_count": 6,
+      "image_url": "https://cdn-icons-png.flaticon.com/256/1077/1077114.png"
+    }
+  },
+  {
+    "model": "frontend.game",
+    "pk": 4,
+    "fields": {
+      "title": "Elden Ring",
+      "genre": "Melhor",
+      "description": "Um jogo fuderoso.",
+      "release_date": "2023-01-01",
+      "like_count": 0,
+      "to_play_count": 5000000,
+      "already_played_count": 6,
+      "image_url": "https://cdn-icons-png.flaticon.com/256/1077/1077114.png"
+    }
+  },
+  {
+    "model": "frontend.game",
+    "pk": 5,
+    "fields": {
+      "title": "Elden Ring",
+      "genre": "Melhor",
+      "description": "Um jogo fuderoso.",
+      "release_date": "2023-01-01",
+      "like_count": 0,
+      "to_play_count": 5000000,
+      "already_played_count": 6,
+      "image_url": "https://cdn-icons-png.flaticon.com/256/1077/1077114.png"
+    }
+  }
+]

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-gradient {
+            background-image: radial-gradient(ellipse 80% 80% at 50% 20%, rgba(119,43,165,0.6), rgba(119,255,255,0));
+        }
+    </style>
+</head>
+<body class="bg-neutral-950 bg-gradient min-h-screen flex items-center animate justify-center">
+    <div class="bg-white/10 backdrop-blur-md p-8 rounded-lg shadow-lg w-96">
+        <h1 class="text-2xl font-bold mb-6 text-center text-white">Login</h1>
+        
+        <form id="loginForm" method="POST" action="{% url 'login' %}" class="space-y-4">
+            {% csrf_token %}
+
+            <!-- Bloco para exibir mensagens -->
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="text-white bg-red-500 p-2 rounded my-2{% if message.tags %} {{ message.tags }}{% endif %}">
+                            {{ message }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <!-- Fim do bloco de mensagens -->
+
+            <div>
+                <label for="username" class="block text-white my-1">Nome de Usuário</label>
+                <input type="text" id="username" name="username" required
+                       class="px-2 py-1 mx-auto block w-full rounded-md bg-white/20 border-transparent focus:border-purple-500 focus:bg-white/30 focus:ring-0 text-white placeholder-gray-400"
+                       placeholder="Nome de Usuário">
+            </div>
+            <div>
+                <label for="password" class="block text-white my-1">Senha</label>
+                <input type="password" id="password" name="password" required
+                       class="px-2 py-1 my-2 mx-auto block w-full rounded-md bg-white/20 border-transparent focus:border-purple-500 focus:bg-white/30 focus:ring-0 text-white placeholder-gray-400"
+                       placeholder="••••••••">
+            </div>
+            <button type="submit"
+                    class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Log in
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <p class="text-white">Não tem uma conta?</p>
+            <a href="{% url 'cadastro' %}" class="text-purple-300 hover:text-purple-100 underline">Cadastre-se aqui</a>
+        </div>
+    </div>
+</body>
+</html>
