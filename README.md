@@ -38,10 +38,10 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 
 ### Integrantes
 
-[Anderson Gabriel Marques](https://github.com/andgabx)
-[Débora Souza](https://github.com/deboracasouza)
-[Luís Filipe Macedo](https://github.com/filipe-ms)
-[Rafael peixoto](rafael-zzz)
-[Raphael Vilela](https://https://github.com/rafatito07)
-[Yuri Cavalcanti](https://github.com/yuricavalcanti06)
+- [Anderson Gabriel Marques](https://github.com/andgabx)
+- [Débora Souza](https://github.com/deboracasouza)
+- [Luís Filipe Macedo](https://github.com/filipe-ms)
+- [Rafael peixoto](rafael-zzz)
+- [Raphael Vilela](https://https://github.com/rafatito07)
+- [Yuri Cavalcanti](https://github.com/yuricavalcanti06)
 
