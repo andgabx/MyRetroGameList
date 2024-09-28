@@ -64,13 +64,23 @@ class Game(models.Model):
 
 # Modelo de usuário
 class User(AbstractUser):
-
     email = models.EmailField(unique=True)
     user_description = models.CharField(max_length=500)
     favorite_list = models.ManyToManyField(Game, related_name='favorited_by')
     to_play = models.ManyToManyField(Game, related_name="will_be_played_by")
     playing_now = models.ManyToManyField(Game, related_name="being_played_by")
     already_played = models.ManyToManyField(Game, related_name='played_by')
+
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='frontend_user_set',  # Unique name for frontend user groups
+        blank=True,
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='frontend_user_permissions_set',  # Unique name for frontend user permissions
+        blank=True,
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
