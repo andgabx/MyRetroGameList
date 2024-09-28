@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Register</title>
+        
+        {% load static %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/register.css' %}" />
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    
+    <body
+        class="bg-neutral-950 bg-gradient min-h-screen flex items-center justify-center">
+        <div
+            class="bg-white/10 backdrop-blur-md p-8 rounded-lg shadow-lg w-96 sm:mx-12">
+            <h1 class="text-2xl font-bold mb-6 text-center text-white">
+                Register
+            </h1>
+
+            <form
+                id="registrationForm"
+                method="POST"
+                action="{% url 'register' %}"
+                class="space-y-4">
+                {% csrf_token %}
+
+                <!-- Bloco para exibir mensagens -->
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li
+                        class="text-white bg-red-500 p-2 rounded my-2{% if message.tags %} {{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <!-- Fim do bloco de mensagens -->
+                <div>
+                    <label for="username" class="block text-white my-1">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        required
+                        class="px-2 py-1 mx-auto block w-full rounded-md bg-white/20 border-transparent focus:border-purple-500 focus:bg-white/30 focus:ring-0 text-white placeholder-gray-400"
+                        placeholder="Username" />
+                </div>
+                <div>
+                    <label for="email" class="block text-white my-1">
+                        E-mail
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        class="px-2 py-1 mx-auto block w-full rounded-md bg-white/20 border-transparent focus:border-purple-500 focus:bg-white/30 focus:ring-0 text-white placeholder-gray-400"
+                        placeholder="your@mail.com" />
+                </div>
+                <div>
+                    <label for="password" class="block text-white my-1">
+                        Password
+                    </label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                        class="px-2 py-1 my-2 mx-auto block w-full rounded-md bg-white/20 border-transparent focus:border-purple-500 focus:bg-white/30 focus:ring-0 text-white placeholder-gray-400"
+                        placeholder="••••••••" />
+                </div>
+                <button
+                    type="submit"
+                    class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Register
+                </button>
+            </form>
+            <div class="mt-4 text-center hover:underline">
+                <a
+                    href="{% url 'login' %}"
+                    class="text-purple-300 hover:text-purple-100 underline">
+                    Already have an account? Login here
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
