@@ -1,3 +1,5 @@
+{% load static %}
+
 <!-- Botao Sidebar -->
 <button
     id="sidebarToggle"
@@ -15,11 +17,11 @@
     <div
         class="h-full px-3 py-4 overflow-y-auto bg-opacity-50 bg-purple-900 backdrop-blur-md">
         <div>
-                <img
-                class="h-[128px] w-[128px] mx-auto"
-                src="/media/assets/logo.png"
-                alt="Logo" />
-                </div>
+            <img
+            class="h-[90px] w-[90px]"
+            src="{% static 'media/assets/logo.png' %}"
+            alt="Logo" />
+        </div>
         <div class="block items-center justify-between mb-5 p-2">
             <div class="flex items-center">
             
