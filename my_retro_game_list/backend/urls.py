@@ -2,16 +2,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from frontend.views import *
+from frontend.views import HomeView, LoginView, ExternalUserProfileDisplayView, CadastroView, ManageGameRemovalView, ManageGameAdditionView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', HomeView.as_view(), name="home"),
+    path('home/', HomeView.as_view(), name="home"),
     path('cadastro/', CadastroView.as_view(), name='cadastro'),
-    path('profilea/', ProfileView.as_view(), name='profilee'),
-    path('profile/', UserProfile.as_view(), name='profile'),
     path('login/', LoginView.as_view(), name='login'),
-    path('add_to_list/<int:game_id>/<str:list_type>/', add_to_list, name='add_to_list'),
-    path('remove_from_list/<int:game_id>/<str:list_type>/', remove_from_list, name='remove_from_list'),
+    path('user/<int:id>/', ExternalUserProfileDisplayView.as_view(), name='userprofile'),
+    path('user/None/', LoginView.as_view(), name='login'),
+    path('game/remove/<str:action>/<int:id>/', ManageGameRemovalView.as_view(), name='manage_game_removal'),
+    path('game/add/<str:action>/<int:id>/', ManageGameAdditionView.as_view(), name='manage_game_removal'),
 ]
 
 # Add media URL pattern only if in DEBUG mode

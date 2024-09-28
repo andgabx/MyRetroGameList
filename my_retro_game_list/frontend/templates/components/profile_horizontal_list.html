@@ -1,0 +1,20 @@
+<div class="bg-transparent">
+    <h2 class="text-2xl font-bold mb-4 text-white">{{ list_name }}</h2>
+    <div class="flex space-x-4 overflow-x-auto custom-scrollbar pb-4">
+        <div class="flex space-x-5 overflow-x-auto custom-scrollbar pb-4">
+            {% if games %} {% for game in games %}
+            <div class="flex-shrink-0">
+                <img
+                    src="{{ game.image.url }}"
+                    alt="{{ game.title }}"
+                    class="rounded-lg w-[276px] h-[129px]  mx-auto" />
+                <p class="mt-2 text-sm text-center text-white">
+                    {{ game.title }}
+                </p>
+            </div>
+            {% endfor %} {% else %}
+            <p class="text-white">No games available.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
