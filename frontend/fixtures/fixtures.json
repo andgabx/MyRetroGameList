@@ -1,0 +1,482 @@
+[
+    {
+        "model": "auth.permission",
+        "pk": 1,
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": 1,
+            "codename": "add_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 2,
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": 1,
+            "codename": "change_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 3,
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": 1,
+            "codename": "delete_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 4,
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": 1,
+            "codename": "view_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 5,
+        "fields": {
+            "name": "Can add permission",
+            "content_type": 2,
+            "codename": "add_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 6,
+        "fields": {
+            "name": "Can change permission",
+            "content_type": 2,
+            "codename": "change_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 7,
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": 2,
+            "codename": "delete_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 8,
+        "fields": {
+            "name": "Can view permission",
+            "content_type": 2,
+            "codename": "view_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 9,
+        "fields": {
+            "name": "Can add group",
+            "content_type": 3,
+            "codename": "add_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 10,
+        "fields": {
+            "name": "Can change group",
+            "content_type": 3,
+            "codename": "change_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 11,
+        "fields": {
+            "name": "Can delete group",
+            "content_type": 3,
+            "codename": "delete_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 12,
+        "fields": {
+            "name": "Can view group",
+            "content_type": 3,
+            "codename": "view_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 13,
+        "fields": {
+            "name": "Can add content type",
+            "content_type": 4,
+            "codename": "add_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 14,
+        "fields": {
+            "name": "Can change content type",
+            "content_type": 4,
+            "codename": "change_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 15,
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": 4,
+            "codename": "delete_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 16,
+        "fields": {
+            "name": "Can view content type",
+            "content_type": 4,
+            "codename": "view_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 17,
+        "fields": {
+            "name": "Can add session",
+            "content_type": 5,
+            "codename": "add_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 18,
+        "fields": {
+            "name": "Can change session",
+            "content_type": 5,
+            "codename": "change_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 19,
+        "fields": {
+            "name": "Can delete session",
+            "content_type": 5,
+            "codename": "delete_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 20,
+        "fields": {
+            "name": "Can view session",
+            "content_type": 5,
+            "codename": "view_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 21,
+        "fields": {
+            "name": "Can add game",
+            "content_type": 6,
+            "codename": "add_game"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 22,
+        "fields": {
+            "name": "Can change game",
+            "content_type": 6,
+            "codename": "change_game"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 23,
+        "fields": {
+            "name": "Can delete game",
+            "content_type": 6,
+            "codename": "delete_game"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 24,
+        "fields": {
+            "name": "Can view game",
+            "content_type": 6,
+            "codename": "view_game"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 25,
+        "fields": {
+            "name": "Can add user",
+            "content_type": 7,
+            "codename": "add_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 26,
+        "fields": {
+            "name": "Can change user",
+            "content_type": 7,
+            "codename": "change_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 27,
+        "fields": {
+            "name": "Can delete user",
+            "content_type": 7,
+            "codename": "delete_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 28,
+        "fields": {
+            "name": "Can view user",
+            "content_type": 7,
+            "codename": "view_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 29,
+        "fields": {
+            "name": "Can add game rating",
+            "content_type": 8,
+            "codename": "add_gamerating"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 30,
+        "fields": {
+            "name": "Can change game rating",
+            "content_type": 8,
+            "codename": "change_gamerating"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 31,
+        "fields": {
+            "name": "Can delete game rating",
+            "content_type": 8,
+            "codename": "delete_gamerating"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 32,
+        "fields": {
+            "name": "Can view game rating",
+            "content_type": 8,
+            "codename": "view_gamerating"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": { "app_label": "admin", "model": "logentry" }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": { "app_label": "auth", "model": "permission" }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": { "app_label": "auth", "model": "group" }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": { "app_label": "contenttypes", "model": "contenttype" }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": { "app_label": "sessions", "model": "session" }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": { "app_label": "frontend", "model": "game" }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": { "app_label": "frontend", "model": "user" }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 8,
+        "fields": { "app_label": "frontend", "model": "gamerating" }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "hscb8ik0rckngeue2zysoiw5goc3hbm4",
+        "fields": {
+            "session_data": ".eJxVjMsOwiAQRf-FtSE8xgIu3fsNZBgGqRqalHZl_HfbpAvdnnPufYuI61Lj2nmOYxYXocXplyWkJ7dd5Ae2-yRpass8Jrkn8rBd3qbMr-vR_h1U7HVbJ6M0-UDEDmwhj1ptZEA2wSJwyS4FyGy5QLDKoD4PDE4nqwgDeBSfL-mTN-8:1suOXl:8h9wC_QuRvrE1tAIuDGQvjiVvog6me3r-ZJo84q0fsg",
+            "expire_date": "2024-10-12T03:54:53.855Z"
+        }
+    },
+    {
+        "model": "frontend.game",
+        "pk": 2,
+        "fields": {
+            "title": "Commander Keen",
+            "genre": "Platformer",
+            "description": "Commander Keen is a classic series of platformer video games developed by id Software and published by Apogee Software. First released in 1990, the series was one of the earliest and most influential shareware games on PC. It follows the adventures of Billy Blaze, an eight-year-old genius who dons the persona of \"Commander Keen\" to defend Earth and the galaxy from alien threats. Armed with his homemade spaceship and a neural stunner, Keen embarks on adventures across different worlds and encounters a variety of quirky alien races and challenges.",
+            "release_date": 1990,
+            "image": "games/commanderkeen.jpg"
+        }
+    },
+    {
+        "model": "frontend.game",
+        "pk": 3,
+        "fields": {
+            "title": "Mega Man Zero/ZX Legacy Collection",
+            "genre": "Platformer",
+            "description": "Mega Man Zero/ZX Legacy Collection is a compilation of six action-packed games from Capcom's Mega Man franchise, combining the Mega Man Zero series (originally for Game Boy Advance) and the Mega Man ZX series (from Nintendo DS). Released in 2020 for modern platforms, this collection includes enhanced versions of these beloved 2D side-scrollers, offering a fresh experience for new players while also appealing to longtime fans of the series.",
+            "release_date": 2016,
+            "image": "games/megamanzero.jpg"
+        }
+    },
+    {
+        "model": "frontend.game",
+        "pk": 4,
+        "fields": {
+            "title": "Barbie Project Friendship",
+            "genre": "Adventure",
+            "description": "Prepare-se para a maior aventura da Barbiex nos jogos com Barbie e Barbie unindo forxas para salvar um lugar que todo mundo ama no Malibu: o Centro Comunitxrio Ondas do Malibu! Antes um destino animadxssimo, ele estx quase abandonado, x beira de ser fechado. Hora de pxr a mxo na massa para restaurar a glxria desse centro comunitxrio adorado por todos.",
+            "release_date": 2024,
+            "image": "games/barbie.jpg"
+        }
+    },
+    {
+        "model": "frontend.game",
+        "pk": 5,
+        "fields": {
+            "title": "Time Commando",
+            "genre": "Beat 'em up",
+            "description": "Time Commando is an action-adventure video game developed by Adeline Software International and published by Electronic Arts and Activision. Released in 1996 for PlayStation and PC, with later versions for the Sega Saturn, Time Commando was notable for its innovative concept and unique blend of combat across different historical time periods. The game is a third-person, single-player experience, offering an immersive, time-traveling narrative.",
+            "release_date": 1996,
+            "image": "games/timecommando.jpg"
+        }
+    },
+    {
+        "model": "frontend.game",
+        "pk": 6,
+        "fields": {
+            "title": "A Flappy Bird in Real Life",
+            "genre": "Platformer",
+            "description": "is a simulation game inspired by the original Flappy Bird, where the player controls a bird that must navigate through a series of pipes without hitting them. The game emphasizes realistic physics, sounds, and visuals, enhancing the classic experience with a more immersive and authentic feel. The objective remains the same: guide the bird as far as possible without crashing. Released on October 31, 2018, it's a simple yet challenging game that focuses on precision and timing.",
+            "release_date": 2018,
+            "image": "games/flappybirdreallife.jpg"
+        }
+    },
+    {
+        "model": "frontend.game",
+        "pk": 7,
+        "fields": {
+            "title": "Mega Man X Legacy Collection",
+            "genre": "Platformer",
+            "description": "Mega Man X Legacy Collection is a compilation of the iconic Mega Man X series, developed and published by Capcom. Released in 2018 for various platforms, including PlayStation 4, Xbox One, Nintendo Switch, and PC, this collection brings together the first eight games in the Mega Man X franchise, which originally debuted on the Super Nintendo Entertainment System (SNES) in 1993. The collection is split into two volumes: Volume 1 includes the first four games, while Volume 2 features the remaining titles.",
+            "release_date": 2016,
+            "image": "games/megamanx.jpg"
+        }
+    },
+    {
+        "model": "frontend.game",
+        "pk": 8,
+        "fields": {
+            "title": "Diablo IV",
+            "genre": "RPG",
+            "description": "Diablox IV x a experixncia de RPG de axxo suprema, com infinitos seres malignos para massacrar, incontxveis habilidades para dominar, masmorras aterrorizantes e saques lendxrios. Embarque na campanha xpica sozinho ou com amigos e conhexa personagens memorxveis em uma histxria eletrizante situada em um belo mundo sombrio, ou explore um fim de jogo vasto: lute pelo primeiro lugar nas classificaxxes do Desafio, reaja ao ataque do Inferno nas Marxs Infernais, domine a Forja para criar suas armas supremas e crie personagens poderosos, com jogo e progressxo multiplataforma em todas as plataformas disponxveis.",
+            "release_date": 2023,
+            "image": "games/diablo4.jpg"
+        }
+    },
+    {
+        "model": "frontend.game",
+        "pk": 9,
+        "fields": {
+            "title": "Heroesx of Might & Magicx III - HD Edition",
+            "genre": "Strategy",
+            "description": "Heroesx of Might & Magicx III - HD Edition is a remastered version of the classic turn-based strategy game Heroes of Might and Magic III, originally released in 1999. Developed by DotEmu and published by Ubisoft, this HD Edition was launched in January 2015, revitalizing the beloved title for modern audiences while preserving the core gameplay that made it a fan favorite.",
+            "release_date": 2015,
+            "image": "games/heroes3hd.jpg"
+        }
+    },
+    {
+        "model": "frontend.game",
+        "pk": 10,
+        "fields": {
+            "title": "Counter-Strike",
+            "genre": "FPS",
+            "description": "Counter-Strike is a tactical first-person shooter developed by Valve Corporation and released in 2000. It is one of the most popular and influential titles in the Counter-Strike series, which began as a mod for Half-Life. Known for its competitive gameplay and emphasis on teamwork and strategy, Counter-Strike 1.6 has maintained a dedicated player base for over two decades.",
+            "release_date": 2000,
+            "image": "games/cs16.jpg"
+        }
+    },
+    {
+        "model": "frontend.game",
+        "pk": 11,
+        "fields": {
+            "title": "The Sims 4",
+            "genre": "Real life Simulation",
+            "description": "Solte a imaginaxxo e crie um mundo xnico de Sims para se expressar. Faxa o download de graxa e personalize cada detalhe, desde Sims xs casas e muito mais. Escolha a aparxncia, o modo de agir e de se vestir dos Sims e decida como devem viver cada dia. Projete e construa casas incrxveis para cada famxlia e decore-as com seus mxveis e itens preferidos. Viaje atx vizinhanxas diferentes para conhecer mais Sims e saber sobre suas vidas. Descubra locais belxssimos com ambientes distintos e parta em aventuras espontxneas. Gerencie os altos e baixos da vida dos Sims e veja o que acontece quando vocx joga cenxrios da sua vida real. Conte histxrias do seu jeito, desenvolvendo relacionamentos, seguindo carreiras e aspiraxxes de vida e envolvendo-se neste jogo extraordinxrio, onde as possibilidades sxo infinitas.",
+            "release_date": 2014,
+            "image": "games/thesims4.jpg"
+        }
+    },
+    {
+        "model": "frontend.game",
+        "pk": 12,
+        "fields": {
+            "title": "Dark Souls 3",
+            "genre": "ARPG",
+            "description": "Dark Souls 3 is an action role-playing game (RPG) developed by FromSoftware and published by Bandai Namco Entertainment. Released in 2016, it is the fourth entry in the Souls series and follows the highly acclaimed Dark Souls and Dark Souls II. The game is set in a dark, decaying world where the player takes on the role of the Ashen One, an undead warrior tasked with linking the fire and preventing the end of the world.",
+            "release_date": 2016,
+            "image": "games/darksouls3.jpg"
+        }
+    },
+    {
+        "model": "frontend.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$870000$14egY0Df7PzLKGezXuUFWs$fQdrCN0DeyCBfibfqbSzff221vBUEze6i/BVjtR4D0Y=",
+            "last_login": "2024-09-28T03:54:53.740Z",
+            "is_superuser": false,
+            "username": "Merlin",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-09-27T23:14:40.054Z",
+            "email": "mago@merlin.com",
+            "user_description": "",
+            "groups": [],
+            "user_permissions": [],
+            "favorite_list": [7, 9],
+            "to_play": [4, 8],
+            "playing_now": [12],
+            "already_played": [2, 3, 5, 6, 10]
+        }
+    }
+]
