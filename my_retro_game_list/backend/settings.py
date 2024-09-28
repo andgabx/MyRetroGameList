@@ -4,7 +4,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -16,11 +15,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 AUTH_USER_MODEL = 'frontend.User'
 
 # Application definition
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -112,5 +109,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 
 # MEDIA
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = 'frontend/static/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'frontend/static/media/')

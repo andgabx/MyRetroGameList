@@ -8,10 +8,7 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 *.egg
-venv/
-ENV/
-env/
-env.bak/
+myretro_venv/
 
 # Java
 *.class

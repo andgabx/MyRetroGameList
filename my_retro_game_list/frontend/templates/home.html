@@ -1,84 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
         <title>Gamelist</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-        <!-- Lembrar de colocar num arquivo separado no fim da producao -->
-        <style>
-            .bg-gradient {
-                background-image: radial-gradient(
-                    ellipse 80% 80% at 50% 20%,
-                    rgba(119, 43, 165, 0.6),
-                    rgba(119, 255, 255, 0)
-                );
-            }
-            .custom-scrollbar::-webkit-scrollbar {
-                width: 20px;
-            }
-            .custom-scrollbar::-webkit-scrollbar-track {
-                background: rgba(255, 255, 255, 0.1);
-                border-radius: 10px;
-            }
-            .custom-scrollbar::-webkit-scrollbar-thumb {
-                background: linear-gradient(
-                    180deg,
-                    rgba(119, 43, 165, 0.8),
-                    rgba(119, 255, 255, 0.8)
-                );
-                border-radius: 10px;
-                border: 2px solid rgba(255, 255, 255, 0.1);
-            }
-            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                background: linear-gradient(
-                    180deg,
-                    rgba(119, 43, 165, 1),
-                    rgba(119, 255, 255, 1)
-                );
-            }
-            .custom-scrollbar {
-                scrollbar-width: thin;
-                scrollbar-color: rgba(119, 43, 165, 0.8)
-                    rgba(255, 255, 255, 0.1);
-            }
-        </style>
+        {% load static %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
+
     <body class="bg-neutral-950 bg-gradient min-h-screen">
+
         {% include "components/sidebar.html" %}
 
-        <!-- Main -->
         <div id="mainContent" class="duration-300 p-4">
             <div class="mx-auto max-w-7xl">
-                <div class="flex items-center space-x-4 p-4 rounded-lg">
-                    <div
-                        class="container mx-auto flex justify-around items-center">
-                        <!-- Barra de Pesquisa (90%) -->
-                        <div class="w-11/12 pr-4">
-                            <input
-                                type="text"
-                                placeholder="Digite aqui para pesquisar..."
-                                class="w-full p-2 rounded-lg text-black focus:outline-none" />
-                        </div>
-
-                        <!-- Foto de Perfil (10%) -->
-                        <div class="w-1/12 flex justify-end items-center">
-                            <a href="/user/{{ user.id }}">
-                                <img
-                                    src="/media/assets/profileTemplate.png"
-                                    alt="Foto de Perfil"
-                                    class="w-12 h-12 rounded-full object-cover" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                {% include "components/header.html" %}
 
                 <div class="container text-white mx-auto p-4">
-                    <!-- Game sections -->
                     <div class="space-y-8 py-14">
                         {% include "components/home_list_display.html" with games=top_to_play list_name="Top Games To Play" %}
                         {% include "components/home_list_display.html" with games=top_favorites list_name="Currently Playing" %}
@@ -88,40 +32,12 @@
                 </div>
             </div>
 
-            <!-- Footer -->
             <footer class="mt-12">
                 {% include "components/footer.html" %}
             </footer>
         </div>
 
-        <!-- Lembrar de colocar num arquivo separado no fim da producao -->
+        <script src="{% static 'scripts/home.js' %}"></script>
 
-        <script>
-            // Funcao que trocar o icon chevron de direita p esquerda e vice-versa
-
-            const sidebarToggle = document.getElementById("sidebarToggle");
-            const closeSidebar = document.getElementById("closeSidebar");
-            const sidebar = document.getElementById("sidebar");
-            const mainContent = document.getElementById("mainContent");
-            const toggleIcon = document.getElementById("toggleIcon");
-
-            function toggleSidebar() {
-                sidebar.classList.toggle("-translate-x-full");
-                mainContent.classList.toggle("lg:ml-64");
-                sidebarToggle.classList.toggle("left-64");
-
-                // Mudando icone quando abre ou fecha
-                if (sidebar.classList.contains("-translate-x-full")) {
-                    toggleIcon.classList.remove("bi-chevron-left");
-                    toggleIcon.classList.add("bi-chevron-right");
-                } else {
-                    toggleIcon.classList.remove("bi-chevron-right");
-                    toggleIcon.classList.add("bi-chevron-left");
-                }
-            }
-
-            sidebarToggle.addEventListener("click", toggleSidebar);
-            closeSidebar.addEventListener("click", toggleSidebar);
-        </script>
     </body>
 </html>

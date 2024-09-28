@@ -14,52 +14,54 @@
     aria-label="Sidebar">
     <div
         class="h-full px-3 py-4 overflow-y-auto bg-opacity-50 bg-purple-900 backdrop-blur-md">
-        <div class="flex items-center justify-between mb-5 p-2">
+        <div>
+                <img
+                class="h-[128px] w-[128px] mx-auto"
+                src="/media/assets/logo.png"
+                alt="Logo" />
+                </div>
+        <div class="block items-center justify-between mb-5 p-2">
             <div class="flex items-center">
-                <i class="bi bi-box-seam text-white text-2xl mr-2"></i>
-                <span class="text-white text-xl font-semibold">
+            
+                <span class="text-white text-xl font-semibold mx-auto">
                     MyRetroGameList
                 </span>
             </div>
-            <button id="closeSidebar" class="text-white">
-                <i class="bi bi-x-lg"></i>
-            </button>
         </div>
         <ul class="space-y-2 font-medium">
             <li>
                 <a
-                    href="#"
+                    href="{% url 'home' %}"
                     class="flex items-center p-2 text-white rounded-lg hover:bg-purple-700 group">
                     <i class="bi bi-house-door text-xl mr-3"></i>
-                    <span>Início</span>
+                    <span>Home</span>
                     <i class="bi bi-chevron-right ml-auto"></i>
                 </a>
             </li>
             <li>
                 <a
-                    href="#"
+                    href="{% url 'gamelist' %}"
                     class="flex items-center p-2 text-white rounded-lg hover:bg-purple-700 group">
                     <i class="bi bi-list-task text-xl mr-3"></i>
-                    <span>Lista de Jogos</span>
+                    <span>Game List</span>
                     <i class="bi bi-chevron-right ml-auto"></i>
                 </a>
             </li>
             <li>
-                <a
-                    href="#"
+                <a  href="/user/{{ user.id }}"
                     class="flex items-center p-2 text-white rounded-lg hover:bg-purple-700 group">
                     <i class="bi bi-person-badge text-xl mr-3"></i>
-                    <span>Usuário</span>
+                    <span>User</span>
                     <i class="bi bi-chevron-right ml-auto"></i>
                 </a>
             </li>
         </ul>
     </div>
 
-    <div class="mt-auto p-4 hover:bg-purple-700 sticky bottom-0">
-        <a href="#" class="flex items-center text-white">
-            <i class="bi bi-info-circle text-xl mr-3"></i>
-            <span>Sobre nós</span>
+    <div class="p-4 hover:bg-purple-700 sticky bottom-0 flex items-center justify-between">
+        <i class="bi bi-info-circle text-xl text-white"></i>
+        <a href="#" class="flex-grow text-center text-white">
+            <span>About us</span>
         </a>
     </div>
 </aside>

@@ -3,95 +3,59 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <title>User Profile</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+
+        {% load static %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/external_profile.css' %}" />
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-
-        <!-- Lembrar de colocar num arquivo separado no fim da producao -->
-        <style>
-            .bg-gradient {
-                background-image: radial-gradient(
-                    ellipse 80% 80% at 50% 20%,
-                    rgba(119, 43, 165, 0.6),
-                    rgba(119, 255, 255, 0)
-                );
-            }
-            .custom-scrollbar::-webkit-scrollbar {
-                width: 20px;
-            }
-            .custom-scrollbar::-webkit-scrollbar-track {
-                background: rgba(255, 255, 255, 0.1);
-                border-radius: 10px;
-            }
-            .custom-scrollbar::-webkit-scrollbar-thumb {
-                background: linear-gradient(
-                    180deg,
-                    rgba(119, 43, 165, 0.8),
-                    rgba(119, 255, 255, 0.8)
-                );
-                border-radius: 10px;
-                border: 2px solid rgba(255, 255, 255, 0.1);
-            }
-            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                background: linear-gradient(
-                    180deg,
-                    rgba(119, 43, 165, 1),
-                    rgba(119, 255, 255, 1)
-                );
-            }
-            .custom-scrollbar {
-                scrollbar-width: thin;
-                scrollbar-color: rgba(119, 43, 165, 0.8)
-                    rgba(255, 255, 255, 0.1);
-            }
-        </style>
     </head>
+
     <body class="bg-neutral-950 bg-gradient min-h-screen">
+
         {% include "components/sidebar.html" %}
 
         <!-- Main -->
         <div id="mainContent" class="transition-all duration-300 p-4">
             <div class="mx-auto max-w-7xl">
+
                 <!-- Row de perfil -->
                 <div class="grid md:grid-cols-3 gap-8 my-8">
+
                     <!-- Primeira Coluna - Foto de Perfil -->
                     <div class="flex justify-center">
                         <img
                             class="rounded-full w-100 h-100 object-cover"
-                            src="/media/assets/profileTemplate.png"
+                            src="{% static '/media/assets/profileTemplate.png' %}"
                             alt="Description of your image" />
                     </div>
 
                     <!-- Segunda Coluna - Informações -->
                     <div class="text-center md:text-center">
+
                         <h1 class="text-3xl text-white my-4 font-bold">
-                            {{ nome }}
+                            {{ user.username }}
                         </h1>
+
                         <p class="text-white text-lg font-bold">Level 1</p>
+
                         <div class="flex justify-center items-center mt-2">
                             <p class="text-white mr-2">Recife, Brasil</p>
                             <i class="bi bi-flag text-white text-2xl"></i>
                         </div>
+
                         <div class="mt-4">
-                            <p class="text-white text-justify text-md">
-                                Apaixonada por jogos de aventura e RPGs. Adoro
-                                explorar novos mundos, encontrar todos os easter
-                                eggs e completar 100% das conquistas. Gosto de
-                                jogar com amigos, especialmente em cooperativos.
-                                Se você curte desafios e bom papo, bora jogar
-                                juntos! 🎮
-                            </p>
+                            <p class="text-white text-justify text-md">Apaixonada por jogos de aventura e RPGs. Adoro explorar novos mundos, encontrar todos os easter eggs e completar 100% das conquistas. Gosto de jogar com amigos, especialmente em cooperativos. Se você curte desafios e bom papo, bora jogar juntos! 🎮</p>
                         </div>
+
                     </div>
 
                     <!-- Terceira Coluna - Notificações -->
                     <div class="space-y-4">
-                        <h1
-                            class="text-white py-2 text-2xl text-center font-bold">
-                            Best Game Ever
-                        </h1>
+                        <h1 class="text-white py-2 text-2xl text-center font-bold">Best Game Ever</h1>
                     </div>
 
                     <!--IMAGEM AQUI-->
@@ -106,40 +70,12 @@
                 
             </div>
 
-            <!-- Footer -->
             <footer class="mt-12">
                 {% include "components/footer.html" %}
             </footer>
         </div>
 
-        <!-- Lembrar de colocar num arquivo separado no fim da producao -->
-
-        <script>
-            // Funcao que trocar o icon chevron de direita p esquerda e vice-versa
-
-            const sidebarToggle = document.getElementById("sidebarToggle");
-            const closeSidebar = document.getElementById("closeSidebar");
-            const sidebar = document.getElementById("sidebar");
-            const mainContent = document.getElementById("mainContent");
-            const toggleIcon = document.getElementById("toggleIcon");
-
-            function toggleSidebar() {
-                sidebar.classList.toggle("-translate-x-full");
-                mainContent.classList.toggle("lg:ml-64");
-                sidebarToggle.classList.toggle("left-64");
-
-                // Mudando icone quando abre ou fecha
-                if (sidebar.classList.contains("-translate-x-full")) {
-                    toggleIcon.classList.remove("bi-chevron-left");
-                    toggleIcon.classList.add("bi-chevron-right");
-                } else {
-                    toggleIcon.classList.remove("bi-chevron-right");
-                    toggleIcon.classList.add("bi-chevron-left");
-                }
-            }
-
-            sidebarToggle.addEventListener("click", toggleSidebar);
-            closeSidebar.addEventListener("click", toggleSidebar);
-        </script>
+        <script src="{% static 'scripts/external_profile.js' %}"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
     </body>
 </html>

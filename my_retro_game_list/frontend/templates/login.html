@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Login</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .bg-gradient {
-            background-image: radial-gradient(ellipse 80% 80% at 50% 20%, rgba(119,43,165,0.6), rgba(119,255,255,0));
-        }
-    </style>
+
 </head>
 <body class="bg-neutral-950 bg-gradient min-h-screen flex items-center animate justify-center">
     <div class="bg-white/10 backdrop-blur-md p-8 rounded-lg shadow-lg w-96">
@@ -18,7 +19,6 @@
         <form id="loginForm" method="POST" action="{% url 'login' %}" class="space-y-4">
             {% csrf_token %}
 
-            <!-- Bloco para exibir mensagens -->
             {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
@@ -28,13 +28,12 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            <!-- Fim do bloco de mensagens -->
 
             <div>
                 <label for="username" class="block text-white my-1">E-mail</label>
                 <input type="text" id="username" name="username" required
                        class="px-2 py-1 mx-auto block w-full rounded-md bg-white/20 border-transparent focus:border-purple-500 focus:bg-white/30 focus:ring-0 text-white placeholder-gray-400"
-                       placeholder="your@m.com">
+                       placeholder="your@mail.com">
             </div>
             <div>
                 <label for="password" class="block text-white my-1">Password</label>
@@ -50,7 +49,7 @@
 
         <div class="mt-6 text-center">
             <p class="text-white">Don't have an account?</p>
-            <a href="{% url 'cadastro' %}" class="text-purple-300 hover:text-purple-100 underline">Register here</a>
+            <a href="{% url 'register' %}" class="text-purple-300 hover:text-purple-100 underline">Register here</a>
         </div>
     </div>
 </body>

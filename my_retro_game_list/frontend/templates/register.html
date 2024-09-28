@@ -3,18 +3,15 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <title>Register</title>
+        
+        {% load static %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/register.css' %}" />
         <script src="https://cdn.tailwindcss.com"></script>
-        <style>
-            .bg-gradient {
-                background-image: radial-gradient(
-                    ellipse 80% 80% at 50% 20%,
-                    rgba(119, 43, 165, 0.6),
-                    rgba(119, 255, 255, 0)
-                );
-            }
-        </style>
     </head>
+    
     <body
         class="bg-neutral-950 bg-gradient min-h-screen flex items-center justify-center">
         <div
@@ -26,7 +23,7 @@
             <form
                 id="registrationForm"
                 method="POST"
-                action="{% url 'cadastro' %}"
+                action="{% url 'register' %}"
                 class="space-y-4">
                 {% csrf_token %}
 

@@ -10,10 +10,10 @@ from .models import User, Game
 # Cadastro de novos usuários #
 ##############################
 
-class CadastroView(View):
+class RegisterView(View):
     
     def get(self, request):
-        return render(request, 'cadastro.html')
+        return render(request, 'register.html')
 
     def post(self, request):
         username = request.POST.get('username')
@@ -23,7 +23,7 @@ class CadastroView(View):
         # Basic validation
         if not username or not email or not password:
             messages.error(request, 'Please, fill all fields.')
-            return redirect('cadastro')
+            return redirect('register')
 
         try:
             User.objects.create_user(username=username, email=email, password=password)
@@ -32,7 +32,7 @@ class CadastroView(View):
         
         except Exception as e:
             messages.error(request, f'Error: {str(e)}')
-            return redirect('cadastro')  # Redirect back to the registration page on error
+            return redirect('register')  # Redirect back to the registration page on error
     
 
 ####################
@@ -80,23 +80,23 @@ class ManageGameAdditionView(View):
     def post(self, request, action, id):
         game = get_object_or_404(Game, id=id)
 
-        if action == 'add_to_playing_now':
+        if action == 'add_to_playing_now': # Não implementado no front ainda, então o retorno é só uma JsonResponse
             request.user.add_to_playing_now(game.id)
             return JsonResponse({'success': True, 'message': 'Game added to Playing Now list.'})
 
         elif action == 'add_to_to_play':
             request.user.add_to_to_play(game.id)
-            return JsonResponse({'success': True, 'message': 'Game added to To Play list.'})
+            return redirect('gamelist')
 
         elif action == 'add_to_already_played':
             request.user.add_to_already_played(game.id)
-            return JsonResponse({'success': True, 'message': 'Game added to Already Played list.'})
+            return redirect('gamelist')
 
-        elif action == 'add_to_favorite_list':
+        elif action == 'add_to_favorite_list':  # Não implementado no front ainda, então o retorno é só uma JsonResponse
             request.user.add_to_favorite_list(game.id)
             return JsonResponse({'success': True, 'message': 'Game added to Favorite list.'})
 
-        else:
+        else:  # Não implementado no front ainda, então o retorno é só uma JsonResponse
             return JsonResponse({'success': False, 'message': 'Invalid action.'}, status=400)
 
 
@@ -108,23 +108,23 @@ class ManageGameRemovalView(View):
     def post(self, request, action, id):
         game = get_object_or_404(Game, id=id)
 
-        if action == 'remove_from_playing_now':
+        if action == 'remove_from_playing_now':  # Não implementado no front ainda, então o retorno é só uma JsonResponse
             request.user.remove_playing_now(game.id)
             return JsonResponse({'success': True, 'message': 'Game removed from Playing Now list.'})
 
-        elif action == 'remove_from_already_played':
+        elif action == 'remove_from_already_played':  # Não implementado no front ainda, então o retorno é só uma JsonResponse
             request.user.remove_from_already_played(game.id)
             return JsonResponse({'success': True, 'message': 'Game removed from Already Played list.'})
 
-        elif action == 'remove_from_to_play':
+        elif action == 'remove_from_to_play':  # Não implementado no front ainda, então o retorno é só uma JsonResponse
             request.user.remove_from_to_play(game.id)
             return JsonResponse({'success': True, 'message': 'Game removed from To Play list.'})
 
-        elif action == 'remove_from_favorite_list':
+        elif action == 'remove_from_favorite_list':  # Não implementado no front ainda, então o retorno é só uma JsonResponse
             request.user.remove_from_favorite_list(game.id)
             return JsonResponse({'success': True, 'message': 'Game removed from Favorite list.'})
 
-        else:
+        else:  # Não implementado no front ainda, então o retorno é só uma JsonResponse
             return JsonResponse({'success': False, 'message': 'Invalid action.'}, status=400)
         
 
@@ -143,3 +143,29 @@ class HomeView(View):
             'user': request.user,
         }
         return render(request, 'home.html', context)
+    
+
+################
+#    Search    #
+################
+
+class GameListView(View):
+    def get(self, request):
+        add_manager = ManageGameAdditionView()
+        remove_manager = ManageGameRemovalView()
+        context = {
+            "add_manager" : add_manager,
+            "remove_manager" : remove_manager,
+            "games" : Game.get_all_games(),
+            "user" : request.user,
+        }
+        return render(request, "gamelist.html", context)
+    
+
+
+################
+#     404      #
+################
+
+def not_found(request, exception):
+    return render(request, '404.html', status=404)
