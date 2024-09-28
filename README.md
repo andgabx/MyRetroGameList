@@ -35,3 +35,13 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 
 ### Quadro do Jira
 ![Quadro do Jira](./assets/quadrojira.png)
+
+### Integrantes
+
+[Anderson Gabriel Marques](https://github.com/andgabx)
+[Débora Souza](https://github.com/deboracasouza)
+[Luís Filipe Macedo](https://github.com/filipe-ms)
+[Rafael peixoto](rafael-zzz)
+[Raphael Vilela](https://https://github.com/rafatito07)
+[Yuri Cavalcanti](https://github.com/yuricavalcanti06)
+
