@@ -18,7 +18,11 @@ if NOT_PROD:
     DEBUG = True
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = 'django-insecure-nb2-9n@sd70le-#8)1oh!+^t65sng*gxmboxd*_txgaek)nc*_'
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = [
+        'myretrogamelist.azurewebsites.net',
+        'localhost',
+        '127.0.0.1',
+    ]
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
