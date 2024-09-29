@@ -23,7 +23,7 @@ if NOT_PROD:
         'localhost',
         '127.0.0.1',
     ]
-    CSRF_TRUSTED_ORIGINS = ['myretrogamelist.azurewebsites.net']
+    CSRF_TRUSTED_ORIGINS = ['https://myretrogamelist.azurewebsites.net']
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
