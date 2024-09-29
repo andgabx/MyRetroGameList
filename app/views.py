@@ -32,7 +32,7 @@ class RegisterView(View):
         
         except Exception as e:
             messages.error(request, f'Error: {str(e)}')
-            return redirect('register')  # Redirect back to the registration page on error
+            return redirect('register')
     
 
 ####################
@@ -45,14 +45,14 @@ class LoginView(View):
         return render(request, 'login.html')
 
     def post(self, request):
-        username = request.POST.get('username')  # Change 'email' back to 'username'
+        username = request.POST.get('username') 
         password = request.POST.get('password')
 
         try:
-            user = authenticate(username=username, password=password)  # Authenticate using username
+            user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')  # Adjust redirect as necessary
+                return redirect('home')
             else:
                 messages.error(request, 'Error during login! Check your credentials.')
                 return redirect('login')
