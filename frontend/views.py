@@ -40,21 +40,19 @@ class RegisterView(View):
 ####################
 
 class LoginView(View):
-    
-    # Handles GET request to show the login form
+
     def get(self, request):
         return render(request, 'login.html')
 
-    # Handles POST request to authenticate user
     def post(self, request):
-        username = request.POST.get('username')
+        email = request.POST.get('email')  # Get the email from POST data
         password = request.POST.get('password')
 
         try:
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(username=email, password=password)  # Use email for authentication
             if user is not None:
                 login(request, user)
-                return redirect('home')  # or another valid URL
+                return redirect('')  # You can define the redirect URL here
             else:
                 messages.error(request, 'Error during login! Check your credentials.')
                 return redirect('login')
