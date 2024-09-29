@@ -1,0 +1,62 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+myretro_venv/
+ven/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+
+# Ruby
+*.gem
+*.rbc
+log/
+tmp/
+db/*.sqlite3
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+
+# Visual Studio Code
+.vscode/
+.history/
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build directories
+dist/
+build/
