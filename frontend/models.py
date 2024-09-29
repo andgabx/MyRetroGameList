@@ -71,11 +71,23 @@ class User(AbstractUser):
     playing_now = models.ManyToManyField(Game, related_name="being_played_by")
     already_played = models.ManyToManyField(Game, related_name='played_by')
 
+    # Override groups and user_permissions with unique related_name
+    groups = models.ManyToManyField(
+        Group,
+        related_name='custom_user_groups',  # Unique related name
+        blank=True,
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        related_name='custom_user_permissions',  # Unique related name
+        blank=True,
+    )
+
     def __init__(self, *args, **kwargs):
         super(User, self).__init__(*args, **kwargs)
 
     def set_user_description(self, description: str):
-        """Modifica e salva a descrição do usuário."""
+        """Modify and save the user's description."""
         self.user_description = description
         self.save()
 
