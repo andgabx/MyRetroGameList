@@ -30,8 +30,6 @@ urlpatterns = [
     
 ]
 
-handler404 = 'frontend.views.not_found'
-
 # Add media URL pattern only if in DEBUG mode
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
