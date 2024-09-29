@@ -152,3 +152,7 @@ AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 # MEDIA
 MEDIA_URL = 'frontend/static/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'frontend/static/media/')
+
+SESSION_COOKIE_SECURE = True  # Only send cookies over HTTPS
+CSRF_COOKIE_SECURE = True      # Only send CSRF cookies over HTTPS
+CSRF_COOKIE_HTTPONLY = True     # Prevent JavaScript access to the CSRF cookie
