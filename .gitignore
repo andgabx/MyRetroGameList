@@ -1,3 +1,5 @@
+*.yml
+
 # Node.js
 node_modules/
 npm-debug.log
@@ -10,6 +12,7 @@ __pycache__/
 *.egg
 myretro_venv/
 ven/
+workflows/
 
 # Java
 *.class
