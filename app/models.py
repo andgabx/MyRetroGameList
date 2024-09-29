@@ -9,6 +9,17 @@ class Game(models.Model):
     description = models.TextField()
     release_date = models.PositiveIntegerField()
     image = models.ImageField(upload_to='games/', default='Undefined.jpg')
+
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='custom_user_groups',  # Change this to something unique
+        blank=True
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='custom_user_permissions',  # Change this to something unique
+        blank=True
+    )
     
     def __str__(self):
         return self.title
