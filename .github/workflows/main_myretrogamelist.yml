@@ -37,8 +37,10 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
+          cd my_retro_game_list/
           zip release.zip ./* -r
-          mv release.zip .
+          cd ..
+          mv my_retro_game_list/release.zip .
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
