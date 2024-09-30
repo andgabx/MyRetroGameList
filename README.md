@@ -34,6 +34,7 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 - [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
 - [Quadro do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1)
 - [Screencast da aplicação](https://youtu.be/OPGoGZZ1SIs)
+- [Website da aplicação](https://myretrogamelist.azurewebsites.net/)
 
 ## Quadro do Jira
 
