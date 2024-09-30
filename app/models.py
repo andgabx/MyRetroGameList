@@ -62,11 +62,11 @@ class Game(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_description = models.CharField(max_length=500)
-    favorite_list = models.ManyToManyField(Game, related_name='favorited_by')
-    to_play = models.ManyToManyField(Game, related_name="will_be_played_by")
-    playing_now = models.ManyToManyField(Game, related_name="being_played_by")
-    already_played = models.ManyToManyField(Game, related_name='played_by')
+    user_description = models.CharField(max_length=500, blank=True)
+    favorite_list = models.ManyToManyField(Game, related_name='favorited_by', blank=True)
+    to_play = models.ManyToManyField(Game, related_name="will_be_played_by", blank=True)
+    playing_now = models.ManyToManyField(Game, related_name="being_played_by", blank=True)
+    already_played = models.ManyToManyField(Game, related_name='played_by', blank=True)
 
     def set_user_description(self, description: str):
         """Modify and save the user's description."""

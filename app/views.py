@@ -20,7 +20,6 @@ class RegisterView(View):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        user_description = request.POST.get('user_description') 
 
         # Basic validation
         if not username or not email or not password:
@@ -29,7 +28,7 @@ class RegisterView(View):
 
         try:
             user = User.objects.create_user(username=username, email=email, password=password)
-            Profile.objects.create(user=user, user_description=user_description)
+            Profile.objects.create(user=user)
             
             messages.success(request, 'User registered!')
             return redirect('login')
