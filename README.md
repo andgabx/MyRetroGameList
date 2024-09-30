@@ -33,6 +33,7 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 - [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=CANVAS&t=SKrbRf9QYCVFnPRh-0)
 - [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
 - [Quadro do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1)
+- [Screencast da aplicação](https://youtu.be/OPGoGZZ1SIs)
 
 ## Quadro do Jira
 
@@ -47,7 +48,6 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 - [Anderson Gabriel Marques](https://github.com/andgabx)
 - [Débora Souza](https://github.com/deboracasouza)
 - [Luís Filipe Macedo](https://github.com/filipe-ms)
-- [Rafael peixoto](rafael-zzz)
-- [Raphael Vilela](https://https://github.com/rafatito07)
+- [Rafael Peixoto](https://github.com/rafael-zzz)
+- [Raphael Vilela](https://github.com/rafatito07)
 - [Yuri Cavalcanti](https://github.com/yuricavalcanti06)
-
