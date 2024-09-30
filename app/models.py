@@ -60,13 +60,14 @@ class Game(models.Model):
         return top_games
 
 
-class User(AbstractUser):
+class CustomUser(AbstractUser):
     user_description = models.CharField(max_length=500)
     favorite_list = models.ManyToManyField(Game, related_name='favorited_by')
     to_play = models.ManyToManyField(Game, related_name="will_be_played_by")
     playing_now = models.ManyToManyField(Game, related_name="being_played_by")
     already_played = models.ManyToManyField(Game, related_name='played_by')
 
+    """
     groups = models.ManyToManyField(
         'auth.Group',
         related_name='custom_user_groups',  # Change this to something unique
@@ -76,10 +77,10 @@ class User(AbstractUser):
         'auth.Permission',
         related_name='custom_user_permissions',  # Change this to something unique
         blank=True
-    )
+    )"""
 
     def __init__(self, *args, **kwargs):
-        super(User, self).__init__(*args, **kwargs)
+        super(CustomUser, self).__init__(*args, **kwargs)
 
     def set_user_description(self, description: str):
         """Modifica e salva a descrição do usuário."""
@@ -179,13 +180,13 @@ class User(AbstractUser):
     
     @staticmethod
     def get_public_profile_details(**kwargs):
-        return User.objects.prefetch_related('favorite_list', 'to_play', 'playing_now', 'already_played').get(**kwargs)
+        return CustomUser.objects.prefetch_related('favorite_list', 'to_play', 'playing_now', 'already_played').get(**kwargs)
 
 
 # Modelo que permite aos usuários avaliarem os jogos
 class GameRating(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Relaciona a avaliação a um usuário
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # Relaciona a avaliação a um usuário
     game = models.ForeignKey(Game, on_delete=models.CASCADE)  # Relaciona a avaliação a um jogo
     rating = models.IntegerField()  # Avaliação (nota) do jogo pelo usuário
 

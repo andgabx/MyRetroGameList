@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
-from .models import User, Game
+from .models import CustomUser, Game
 
 
 ##############################
@@ -26,7 +26,7 @@ class RegisterView(View):
             return redirect('register')
 
         try:
-            User.objects.create_user(username=username, email=email, password=password)
+            CustomUser.objects.create_user(username=username, email=email, password=password)
             messages.success(request, 'User registered!')
             return redirect('login')
         
@@ -67,7 +67,7 @@ class LoginView(View):
 
 class ExternalUserProfileDisplayView(View):
     def get(self, request, id):
-        context = { 'user' : User.objects.get(id=id), }
+        context = { 'user' : CustomUser.objects.get(id=id), }
         return render(request, 'external_profile.html', context)
 
 
