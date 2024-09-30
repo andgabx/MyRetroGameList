@@ -1,4 +1,4 @@
-# MyRetroGameList
+# MyRetroGameList 👾
 
 MyRetroGameList é uma aplicação web inspirada no conceito de MyAnimeList, mas voltada para jogos retro. A ideia principal é criar um site onde os usuários possam listar jogos de consoles que não são mais desenvolvidos, marcando aqueles que já jogaram, finalizaram, e gerenciando uma lista de jogos que desejam jogar futuramente.
 
@@ -24,17 +24,17 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 
 ## Entrega 01
 
-- [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=CANVAS&t=SKrbRf9QYCVFnPRh-0)
-- [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
-- [Quadro do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1)
+📝 [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=CANVAS&t=SKrbRf9QYCVFnPRh-0)
+📜 [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
+📈 [Quadro do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1)
 
 ## Entrega 02
 
-- [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=CANVAS&t=SKrbRf9QYCVFnPRh-0)
-- [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
-- [Quadro do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1)
-- [Screencast da aplicação](https://youtu.be/OPGoGZZ1SIs)
-- [Website da aplicação](https://myretrogamelist.azurewebsites.net/)
+📝 [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=CANVAS&t=SKrbRf9QYCVFnPRh-0)
+📜 [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
+📈 [Quadro do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1)
+📺 [Screencast da aplicação](https://youtu.be/OPGoGZZ1SIs)
+👾 [Website da aplicação](https://myretrogamelist.azurewebsites.net/)
 
 ## Quadro do Jira
 
