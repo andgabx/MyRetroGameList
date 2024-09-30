@@ -24,17 +24,18 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 
 ## Entrega 01
 
-📝 [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=CANVAS&t=SKrbRf9QYCVFnPRh-0)
-📜 [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
+📝 [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=CANVAS&t=SKrbRf9QYCVFnPRh-0)  
+📜 [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)  
 📈 [Quadro do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1)
 
 ## Entrega 02
 
-📝 [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=CANVAS&t=SKrbRf9QYCVFnPRh-0)
-📜 [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
-📈 [Quadro do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1)
-📺 [Screencast da aplicação](https://youtu.be/OPGoGZZ1SIs)
-👾 [Website da aplicação](https://myretrogamelist.azurewebsites.net/)
+📝 [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=CANVAS&t=SKrbRf9QYCVFnPRh-0)  
+📜 [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)  
+📈 [Quadro do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1)  
+📺 [Screencast da aplicação](https://youtu.be/OPGoGZZ1SIs)  
+👾 [Website da aplicação](https://myretrogamelist.azurewebsites.net/)  
+**Observação**: Caso não esteja logado, clique no ícone de perfil no canto superior direito para ser redirecionado para a página de login.
 
 ## Quadro do Jira
 
