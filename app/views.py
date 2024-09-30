@@ -71,8 +71,7 @@ class LoginView(View):
 
 class ExternalUserProfileDisplayView(View):
     def get(self, request, id):
-
-        profile = User.objects.get(id=id)
+        profile = get_object_or_404(Profile, user__id=id)
         
         context = {
             'profile': profile,
