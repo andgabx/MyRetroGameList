@@ -24,17 +24,23 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 
 ## Entrega 01
 
-### Links Importantes:
-
-- [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
 - [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=CANVAS&t=SKrbRf9QYCVFnPRh-0)
+- [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
 - [Quadro do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1)
 
-### Backlog do Jira
-![Backlog do Jira](./assets/backlogjira.png)
+## Entrega 02
 
-### Quadro do Jira
-![Quadro do Jira](./assets/quadrojira.png)
+- [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=CANVAS&t=SKrbRf9QYCVFnPRh-0)
+- [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
+- [Quadro do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1)
+
+## Quadro do Jira
+
+![{8D45BBBA-E719-423F-BE5F-150BF396B707}](https://github.com/user-attachments/assets/8c6e2df1-90e4-4da8-98e2-355daccffbdf)
+
+## Nosso Backlog
+
+![{B808A8FD-C913-428F-BD35-1355F6C3DEE7}](https://github.com/user-attachments/assets/e1977d7e-3ffd-448f-873d-b69ed9bb0113)
 
 ### Integrantes
 
