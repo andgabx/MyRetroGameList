@@ -70,9 +70,9 @@ class LoginView(View):
 ################################
 
 class ExternalUserProfileDisplayView(View):
-    def get(self, request):
+    def get(self, request, id):
 
-        profile = get_object_or_404(Profile, user=request.user)
+        profile = User.objects.get(id=id)
         
         context = {
             'profile': profile,
