@@ -6,8 +6,8 @@ class Game(models.Model):
 
     title = models.CharField(max_length=100)
     genre = models.CharField(max_length=100, default="Undefined")
-    description = models.TextField()
-    release_date = models.PositiveIntegerField()
+    description = models.TextField(default="")
+    release_date = models.PositiveIntegerField(default=0)
     image = models.ImageField(upload_to='games/', default='Undefined.jpg')
     
     def __str__(self):
