@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
-from .models import CustomUser, Game
+from django.contrib.auth.models import User
+from .models import Profile, Game
 
 
 ##############################
@@ -19,6 +20,7 @@ class RegisterView(View):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
+        user_description = request.POST.get('user_description') 
 
         # Basic validation
         if not username or not email or not password:
@@ -26,7 +28,9 @@ class RegisterView(View):
             return redirect('register')
 
         try:
-            CustomUser.objects.create_user(username=username, email=email, password=password)
+            user = User.objects.create_user(username=username, email=email, password=password)
+            Profile.objects.create(user=user, user_description=user_description)
+            
             messages.success(request, 'User registered!')
             return redirect('login')
         
@@ -49,7 +53,7 @@ class LoginView(View):
         password = request.POST.get('password')
 
         try:
-            user = authenticate(username=username, password=password)
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
                 return redirect('home')
@@ -66,8 +70,13 @@ class LoginView(View):
 ################################
 
 class ExternalUserProfileDisplayView(View):
-    def get(self, request, id):
-        context = { 'user' : CustomUser.objects.get(id=id), }
+    def get(self, request):
+
+        profile = get_object_or_404(Profile, user=request.user)
+        
+        context = {
+            'profile': profile,
+        }
         return render(request, 'external_profile.html', context)
 
 
@@ -78,24 +87,25 @@ class ExternalUserProfileDisplayView(View):
 class ManageGameAdditionView(View):
     def post(self, request, action, id):
         game = get_object_or_404(Game, id=id)
+        profile = get_object_or_404(Profile, user=request.user)
 
-        if action == 'add_to_playing_now': # Não implementado no front ainda, então o retorno é só uma JsonResponse
-            request.user.add_to_playing_now(game.id)
+        if action == 'add_to_playing_now':
+            profile.playing_now.add(game)
             return JsonResponse({'success': True, 'message': 'Game added to Playing Now list.'})
 
         elif action == 'add_to_to_play':
-            request.user.add_to_to_play(game.id)
+            profile.to_play.add(game)
             return redirect('gamelist')
 
         elif action == 'add_to_already_played':
-            request.user.add_to_already_played(game.id)
+            profile.already_played.add(game)
             return redirect('gamelist')
 
-        elif action == 'add_to_favorite_list':  # Não implementado no front ainda, então o retorno é só uma JsonResponse
-            request.user.add_to_favorite_list(game.id)
+        elif action == 'add_to_favorite_list':
+            profile.favorite_list.add(game)
             return JsonResponse({'success': True, 'message': 'Game added to Favorite list.'})
 
-        else:  # Não implementado no front ainda, então o retorno é só uma JsonResponse
+        else:
             return JsonResponse({'success': False, 'message': 'Invalid action.'}, status=400)
 
 
@@ -106,24 +116,25 @@ class ManageGameAdditionView(View):
 class ManageGameRemovalView(View):
     def post(self, request, action, id):
         game = get_object_or_404(Game, id=id)
+        profile = get_object_or_404(Profile, user=request.user)
 
-        if action == 'remove_from_playing_now':  # Não implementado no front ainda, então o retorno é só uma JsonResponse
-            request.user.remove_playing_now(game.id)
+        if action == 'remove_from_playing_now':
+            profile.playing_now.remove(game)
             return JsonResponse({'success': True, 'message': 'Game removed from Playing Now list.'})
 
-        elif action == 'remove_from_already_played':  # Não implementado no front ainda, então o retorno é só uma JsonResponse
-            request.user.remove_from_already_played(game.id)
+        elif action == 'remove_from_already_played':
+            profile.already_played.remove(game)
             return JsonResponse({'success': True, 'message': 'Game removed from Already Played list.'})
 
-        elif action == 'remove_from_to_play':  # Não implementado no front ainda, então o retorno é só uma JsonResponse
-            request.user.remove_from_to_play(game.id)
+        elif action == 'remove_from_to_play':
+            profile.to_play.remove(game)
             return JsonResponse({'success': True, 'message': 'Game removed from To Play list.'})
 
-        elif action == 'remove_from_favorite_list':  # Não implementado no front ainda, então o retorno é só uma JsonResponse
-            request.user.remove_from_favorite_list(game.id)
+        elif action == 'remove_from_favorite_list':
+            profile.favorite_list.remove(game)
             return JsonResponse({'success': True, 'message': 'Game removed from Favorite list.'})
 
-        else:  # Não implementado no front ainda, então o retorno é só uma JsonResponse
+        else:
             return JsonResponse({'success': False, 'message': 'Invalid action.'}, status=400)
         
 
@@ -145,7 +156,7 @@ class HomeView(View):
     
 
 ################
-#    Search    #
+#     List     #
 ################
 
 class GameListView(View):

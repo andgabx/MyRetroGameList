@@ -37,7 +37,7 @@
                     <div class="text-center md:text-center">
 
                         <h1 class="text-3xl text-white my-4 font-bold">
-                            {{ user.username }}
+                            {{ profile.user.username }}
                         </h1>
 
                         <p class="text-white text-lg font-bold">Level 1</p>
@@ -62,10 +62,10 @@
                 </div>
 
                 <div class="space-y-8">
-                    {% include "components/profile_horizontal_list.html" with games=user.favorite_list.all list_name="Favorites" %}
-                    {% include "components/profile_horizontal_list.html" with games=user.playing_now.all list_name="Playing Now" %} 
-                    {% include "components/profile_horizontal_list.html" with games=user.to_play.all list_name="To play" %} 
-                    {% include "components/profile_horizontal_list.html" with games=user.already_played.all list_name="Already Played" %}
+                    {% include "components/profile_horizontal_list.html" with games=profile.favorite_list.all list_name="Favorites" %}
+                    {% include "components/profile_horizontal_list.html" with games=profile.playing_now.all list_name="Playing Now" %} 
+                    {% include "components/profile_horizontal_list.html" with games=profile.to_play.all list_name="To play" %} 
+                    {% include "components/profile_horizontal_list.html" with games=profile.already_played.all list_name="Already Played" %}
                 </div>
                 
             </div>
