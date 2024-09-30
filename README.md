@@ -20,7 +20,7 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 
 - **Frontend**: HTML, TailwindCSS, JavaScript
 - **Backend**: Django (Python)
-- **Banco de Dados**: SQLite
+- **Banco de Dados**: Azure Database for PostgreSQL flexible server
 
 ## Entrega 01
 
