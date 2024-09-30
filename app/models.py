@@ -21,7 +21,7 @@ class Game(models.Model):
         return self.user_set.filter(to_play=self).count()
     
     def get_playing_count(self):
-        return self.user_set.filter(playing=self).count()
+        return self.user_set.filter(playing_now=self).count()
     
     def get_already_played_count(self):
         return self.user_set.filter(already_played=self).count()
