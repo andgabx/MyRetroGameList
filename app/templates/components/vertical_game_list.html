@@ -1,46 +1,35 @@
-{% load static %}
+{% load static %} {% if games %} {% for game in games %}
+<div class="flex items-center space-x-4 p-4 rounded-lg">
+	<img src="{{ game.image_url }}" alt="{{ game.title }}" class="w-50 h-24 object-cover rounded" />
+	<div class="flex-grow">
+		<div class="flex justify-between items-start">
+			<div>
+				<h2 class="text-xl text-white font-bold">{{ game.title }}</h2>
+			</div>
+		</div>
+		<p class="mt-2 text-sm text-gray-300">{{ game.description }}</p>
+	</div>
 
-{% if games %}
-    {% for game in games %}
-        <div class="flex items-center space-x-4 p-4 rounded-lg">
-            <img
-                src="{{ game.image.url }}"
-                alt="{{ game.title }}"
-                class="w-50 h-24 object-cover rounded" />
-            <div class="flex-grow">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h2 class="text-xl text-white font-bold">{{ game.title }}</h2>
-                    </div>
-                </div>
-                <p class="mt-2 text-sm text-gray-300">{{ game.description }}</p>
-            </div>
+	<!-- Botões para adicionar o jogo às listas -->
+	<div class="flex flex-col space-y-2">
+		<!-- Formulário para adicionar o jogo à lista "Já joguei" -->
+		<form method="POST" action="{% url 'manage_game_addition' action='add_to_already_played' id=game.id %}">
+			{% csrf_token %}
+			<button type="submit" class="flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" data-action="add_to_already_played" data-game-id="{{ game.id }}">Already played</button>
+		</form>
 
-            <!-- Botões para adicionar o jogo às listas -->
-            <div class="flex flex-col space-y-2">
-                <!-- Formulário para adicionar o jogo à lista "Já joguei" -->
-                <form method="POST" action="{% url 'manage_game_addition' action='add_to_already_played' id=game.id %}">
-                    {% csrf_token %}
-                    <button type="submit" class="flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" data-action="add_to_already_played" data-game-id="{{ game.id }}">
-                        Already played
-                    </button>
-                </form>
-
-                <!-- Formulário para adicionar o jogo à lista "Quero jogar" -->
-                <form method="POST" action="{% url 'manage_game_addition' action='add_to_to_play' id=game.id %}">
-                    {% csrf_token %}
-                    <button type="submit" class="flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" data-action="add_to_to_play" data-game-id="{{ game.id }}">
-                        I want to play
-                    </button>
-                </form>
-            </div>
-        </div>
-    {% endfor %}
-{% else %}
-    <div class="flex items-center space-x-4 p-4 rounded-lg">
-        <div class="flex-grow text-center">
-            <h2 class="text-xl text-white font-bold">No games found</h2>
-            <p class="mt-2 text-sm text-gray-300">It seems you haven't added any games yet. Start exploring and add your favorites!</p>
-        </div>
-    </div>
+		<!-- Formulário para adicionar o jogo à lista "Quero jogar" -->
+		<form method="POST" action="{% url 'manage_game_addition' action='add_to_to_play' id=game.id %}">
+			{% csrf_token %}
+			<button type="submit" class="flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" data-action="add_to_to_play" data-game-id="{{ game.id }}">I want to play</button>
+		</form>
+	</div>
+</div>
+{% endfor %} {% else %}
+<div class="flex items-center space-x-4 p-4 rounded-lg">
+	<div class="flex-grow text-center">
+		<h2 class="text-xl text-white font-bold">No games found</h2>
+		<p class="mt-2 text-sm text-gray-300">It seems you haven't added any games yet. Start exploring and add your favorites!</p>
+	</div>
+</div>
 {% endif %}
