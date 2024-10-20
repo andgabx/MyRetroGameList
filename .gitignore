@@ -1,1 +1,9 @@
+# Pastas
+
 venv/
+__pycache__/
+
+# Extensões
+
+*.sqlite3
+*.env

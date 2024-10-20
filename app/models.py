@@ -1,3 +1,5 @@
+import base64
+import imghdr
 from django.db import models
 from django.db.models import Count
 from django.contrib.auth.models import User
@@ -8,7 +10,7 @@ class Game(models.Model):
     genre = models.CharField(max_length=100, default="Undefined")
     description = models.TextField(default="")
     release_date = models.PositiveIntegerField(default=0)
-    image = models.ImageField(upload_to='games/', default='Undefined.jpg')
+    image = models.BinaryField(blank=True, null=True)
     
     def __str__(self):
         return self.title
@@ -58,6 +60,27 @@ class Game(models.Model):
         ).order_by('-num_users')[:4]
 
         return top_games
+    
+    # O Azure não dá persistência aos arquivos de imagem upados durante uma sessão.
+    # Sempre que o servidor reinicia, ele descarta as imagens.
+    # Para contornar o problema, reescrevi o save de Game.
+    # Agora as imagens são salvas diretamente no banco de dados como arquivos binários.
+    # Para lê-las, convertemos de volta de binário para base 64 no get_image.
+    
+    def set_image(self, image_file):
+        self._image_file = image_file
+    
+    def save(self, *args, **kwargs): 
+        if hasattr(self, '_image_file'):
+            self.image = self._image_file.read()
+        super().save(*args, **kwargs)
+
+    def get_image(self):
+        if self.image:
+            img_ext = imghdr.what(None, h=self.image)
+            if img_ext:
+                return f"data:image/{img_ext};base64," + base64.b64encode(self.image).decode('utf-8')
+        return ""
 
 
 class Profile(models.Model):

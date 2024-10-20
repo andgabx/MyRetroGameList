@@ -28,9 +28,8 @@
                 <!-- Jogo com requisicao adicionada -->
                 {% include "components/vertical_game_list.html" with games=games user=user add_manager=add_manager remove_manager=remove_manager %}
 
-            <footer class="mt-12">
                 {% include "components/footer.html" %}
-            </footer>
+
         </div>
 
         <script src="{% static 'scripts/gamelist.js' %}"></script>

@@ -1,16 +1,16 @@
 <section>
-    <h2 class="text-xl font-bold mb-4">{{ list_name }}</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {% for game in games %}
-            <div class="bg-gray-800 rounded">
-                <img src="{{ game.image.url }}" alt="{{ game.title }}" width="368" height="172" class="w-368 h-172 object-contain rounded">
-                <div class="p-2">
-                    <h3 class="text-white text-lg">{{ game.title }}</h3>
-                    <p class="text-gray-400">{{ game.genre }}</p>
-                </div>
-            </div>
-        {% empty %}
-            <p>No games available.</p>
-        {% endfor %}
-    </div>
+	<h2 class="text-xl font-bold mb-4">{{ list_name }}</h2>
+	<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+		{% for game in games %}
+		<div class="bg-gray-800 rounded">
+			<img src="{{ game.get_image }}" alt="{{ game.title }}" width="368" height="172" class="w-368 h-172 object-contain rounded" />
+			<div class="p-2">
+				<h3 class="text-white text-lg">{{ game.title }}</h3>
+				<p class="text-gray-400">{{ game.genre }}</p>
+			</div>
+		</div>
+		{% empty %}
+		<p>No games available.</p>
+		{% endfor %}
+	</div>
 </section>

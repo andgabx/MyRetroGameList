@@ -1,9 +1,5 @@
-// Funcao que trocar o icon chevron de direita p esquerda e vice-versa
-
 const sidebarToggle = document.getElementById("sidebarToggle");
-const closeSidebar = document.getElementById("closeSidebar");
 const sidebar = document.getElementById("sidebar");
-const mainContent = document.getElementById("mainContent");
 const toggleIcon = document.getElementById("toggleIcon");
 
 function toggleSidebar() {
@@ -22,4 +18,3 @@ function toggleSidebar() {
 }
 
 sidebarToggle.addEventListener("click", toggleSidebar);
-closeSidebar.addEventListener("click", toggleSidebar);

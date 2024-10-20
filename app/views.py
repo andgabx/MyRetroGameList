@@ -1,11 +1,12 @@
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.views import View
-from django.contrib import messages
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
 from .models import Profile, Game
-
 
 ##############################
 # Cadastro de novos usuários #
@@ -39,7 +40,7 @@ class RegisterView(View):
     
 
 ####################
-# Login de usuário #
+#   Autenticação   #
 ####################
 
 class LoginView(View):
@@ -62,6 +63,20 @@ class LoginView(View):
         except Exception as e:
             messages.error(request, f'Error during login: {str(e)}')
             return redirect('login')
+        
+class LogoutView(View):
+
+    def get(self, request):
+        try:
+            if request.user.is_authenticated:
+                logout(request)
+                return redirect('home')
+            else:
+                messages.error(request, 'You are not logged in!')
+                return redirect('home')
+        except Exception as e:
+            messages.error(request, f'Error during logout: {str(e)}')
+            return redirect('home')
 
 
 ################################
@@ -71,11 +86,31 @@ class LoginView(View):
 class ExternalUserProfileDisplayView(View):
     def get(self, request, id):
         profile = get_object_or_404(Profile, user__id=id)
+        isProfileOwner = request.user.id == id
         
         context = {
             'profile': profile,
+            'isProfileOwner' : isProfileOwner,
         }
-        return render(request, 'external_profile.html', context)
+        return render(request, 'edit_profile.html', context)
+    
+
+class EditProfileDescriptionView(LoginRequiredMixin, View):
+    login_url = '/home/'
+
+    def get(self, request, id):
+        profile = get_object_or_404(Profile, user__id=id)
+        context = {
+            'profile': profile
+        }
+        return render(request, "edit_profile.html", context)
+
+    def post(self, request, id):
+        profile = get_object_or_404(Profile, user__id=id)
+        profile.user_description = request.POST.get('description')
+        profile.save()
+        return redirect(reverse("userprofile", args=[profile.user.id]))
+
 
 
 ################

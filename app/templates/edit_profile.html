@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>User Profile</title>
+
+		{% load static %}
+
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/external_profile.css' %}" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+
+	<body class="bg-neutral-950 bg-gradient min-h-screen">
+		{% include "components/sidebar.html" %}
+
+		<!-- Main -->
+		<div id="mainContent" class="transition-all duration-300 p-4">
+			<div class="mx-auto max-w-7xl">
+				<!-- Row de perfil -->
+				<div id="usercontent" class="grid md:grid-cols-3 gap-8 my-8">
+					<!-- Primeira Coluna - Foto de Perfil -->
+					<div class="flex justify-center">
+						<img class="rounded-full w-100 h-100 object-cover" src="{% static 'media/assets/profileTemplate.png' %}" alt="Profile" />
+					</div>
+
+					<div class="text-center md:text-center">
+						<div class="block">
+							<h1 class="text-3xl text-white my-4 font-bold">{{ profile.user.username }}</h1>
+
+							<p class="text-white text-lg font-bold">Level 1</p>
+
+							<div class="flex justify-center items-center mt-2">
+								<p class="text-white mr-2">Recife, Brasil</p>
+								<i class="bi bi-flag text-white text-2xl"></i>
+							</div>
+
+							<!-- Exibir a descrição do usuário -->
+							<div class="max-w-full mt-4">
+								<p class="text-white break-words text-md" id="userDescription">{% if profile.user_description %} {{ profile.user_description }} {% else %} O usuário não adicionou nenhuma descrição. {% endif %}</p>
+							</div>
+
+							<!-- Link para abrir o modal -->
+							{% if user.is_authenticated and isProfileOwner %}
+							<div class="mt-2 py-4">
+								<!-- Verificar se o usuário já tem uma descrição -->
+								{% if profile.user_description %}
+								<a href="#" class="py-3 rounded-md shadow-lg text-white hover:underline" id="editDescriptionBtn">
+									<button class="shadow-lg rounded-md bg-purple-600 p-3 transition duration-400 ease-in-out transform hover:scale-110">Editar descrição</button>
+								</a>
+								{% else %}
+								<a href="#" class="py-3 rounded-md shadow-lg text-white hover:underline" id="editDescriptionBtn">
+									<button class="shadow-lg rounded-md bg-purple-600 p-3 transition duration-400 ease-in-out transform hover:scale-110">Adicionar descrição</button>
+								</a>
+								{% endif %}
+							</div>
+							{% endif %}
+						</div>
+					</div>
+
+					<!-- Terceira Coluna - Notificações -->
+					<div class="space-y-4">
+						<h1 class="text-white py-2 text-2xl text-center font-bold">Best Game Ever</h1>
+					</div>
+
+					<!--IMAGEM AQUI-->
+				</div>
+
+				<div class="space-y-8">{% include "components/profile_horizontal_list.html" with games=profile.favorite_list.all list_name="Favorites" %} {% include "components/profile_horizontal_list.html" with games=profile.playing_now.all list_name="Playing Now" %} {% include "components/profile_horizontal_list.html" with games=profile.to_play.all list_name="To play" %} {% include "components/profile_horizontal_list.html" with games=profile.already_played.all list_name="Already Played" %}</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		{% include "components/footer.html" %}
+
+		<!-- popup para editar a descrição -->
+		{% if user.is_authenticated and isProfileOwner %}
+		<div id="descriptionModal" class="hidden fixed z-10 inset-0 overflow-y-auto">
+			<div class="flex items-center justify-center min-h-screen px-4">
+				<div class="bg-opacity-80 bg-purple-800 relative rounded-lg shadow-lg w-full max-w-md">
+					<div class="p-4 border-b">
+						<h2 class="text-xl text-center text-white font-bold">Editar Descrição</h2>
+					</div>
+					<!-- Formulário para enviar a nova descrição -->
+					<form method="POST" action="{% url 'edit_profile_description' profile.user.id %}">
+						{% csrf_token %}
+						<div class="p-4">
+							<textarea name="description" id="descriptionInput" rows="4" class="w-full p-2 border rounded-md" placeholder="Escreva sua descrição aqui">{{ profile.user_description }}</textarea>
+						</div>
+						<div class="flex p-4 border-t mx-auto justify-evenly space-x-4">
+							<button type="submit" class="text-center bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-md shadow-lg transition duration-400 ease-in-out transform hover:scale-110">Salvar</button>
+							<button type="button" id="cancelBtn" class="text-center bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-md shadow-lg transition duration-400 ease-in-out transform hover:scale-110">Cancelar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<script>
+			// Abre o modal de edição de descrição
+			document.getElementById("editDescriptionBtn").addEventListener("click", function () {
+				document.getElementById("descriptionModal").classList.remove("hidden");
+			});
+
+			// Fecha o modal
+			document.getElementById("cancelBtn").addEventListener("click", function () {
+				document.getElementById("descriptionModal").classList.add("hidden");
+			});
+		</script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+		<!-- Script para abrir e fechar o modal -->
+		<script src="{% static 'page_scripts/edit_profile.js' %}"></script>
+	</body>
+</html>
