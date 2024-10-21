@@ -117,14 +117,43 @@ class EditProfileDescriptionView(LoginRequiredMixin, View):
 #  ADICIONAR   #
 ################
 
-class ManageGameAdditionView(View):
+class ManageGameRemovalView(View):
     def post(self, request, action, id):
         game = get_object_or_404(Game, id=id)
         profile = get_object_or_404(Profile, user=request.user)
 
+        if action == 'remove_from_playing_now':
+            profile.playing_now.remove(game)
+            return redirect('gamelist')
+
+        elif action == 'remove_from_already_played':
+            profile.already_played.remove(game)
+            return redirect('gamelist')
+
+        elif action == 'remove_from_to_play':
+            profile.to_play.remove(game)
+            return redirect('gamelist')
+
+        elif action == 'remove_from_favorite_list':
+            profile.favorite_list.remove(game)
+            return redirect('gamelist')
+
+        else:
+            return redirect('gamelist', {'error': 'Invalid action.'})
+
+
+###########
+# REMOVER # 
+###########
+
+class ManageGameAdditionView(View):
+    def post(self, request, action, id):
+        game = get_object_or_404(Game, id=id)
+        profile, created = Profile.objects.get_or_create(user=request.user)
+
         if action == 'add_to_playing_now':
             profile.playing_now.add(game)
-            return JsonResponse({'success': True, 'message': 'Game added to Playing Now list.'})
+            return redirect('gamelist')
 
         elif action == 'add_to_to_play':
             profile.to_play.add(game)
@@ -136,39 +165,15 @@ class ManageGameAdditionView(View):
 
         elif action == 'add_to_favorite_list':
             profile.favorite_list.add(game)
-            return JsonResponse({'success': True, 'message': 'Game added to Favorite list.'})
-
-        else:
-            return JsonResponse({'success': False, 'message': 'Invalid action.'}, status=400)
-
-
-###########
-# REMOVER # 
-###########
-
-class ManageGameRemovalView(View):
-    def post(self, request, action, id):
-        game = get_object_or_404(Game, id=id)
-        profile = get_object_or_404(Profile, user=request.user)
-
-        if action == 'remove_from_playing_now':
-            profile.playing_now.remove(game)
-            return JsonResponse({'success': True, 'message': 'Game removed from Playing Now list.'})
-
-        elif action == 'remove_from_already_played':
-            profile.already_played.remove(game)
-            return JsonResponse({'success': True, 'message': 'Game removed from Already Played list.'})
-
-        elif action == 'remove_from_to_play':
-            profile.to_play.remove(game)
-            return JsonResponse({'success': True, 'message': 'Game removed from To Play list.'})
+            return redirect('gamelist')
 
         elif action == 'remove_from_favorite_list':
             profile.favorite_list.remove(game)
-            return JsonResponse({'success': True, 'message': 'Game removed from Favorite list.'})
+            return redirect('gamelist')
 
         else:
-            return JsonResponse({'success': False, 'message': 'Invalid action.'}, status=400)
+            messages.error(request, 'Invalid action.')
+            return redirect('gamelist')
         
 
 
