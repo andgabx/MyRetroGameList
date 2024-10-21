@@ -1,0 +1,13 @@
+# Pastas
+
+venv/
+__pycache__/
+.github/
+prettier/
+migrations/
+
+# Extensões
+
+*.sqlite3
+*.env
+*.yml

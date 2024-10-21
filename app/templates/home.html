@@ -1,0 +1,42 @@
+{% load static %}
+
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Gamelist</title>
+
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+
+	<body id="mainContent" class="bg-neutral-950 bg-gradient min-h-screen">
+		<!-- Header -->
+		{% include "components/header.html" %}
+
+		<div class="duration-300 p-4">
+			<div class="mx-auto max-w-7xl">
+				<div class="container text-white mx-auto p-4">
+					<div class="space-y-8 py-14">
+						<!-- prettier-ignore -->
+						{% include "components/home_list_display.html" with games=top_to_play list_name="Top Games To Play" %}
+						<!-- prettier-ignore -->
+						{% include "components/home_list_display.html" with games=top_favorites list_name="Currently Playing" %}
+						<!-- prettier-ignore -->
+						{% include "components/home_list_display.html" with games=top_already_played list_name="Most Played by the Community" %}
+						<!-- prettier-ignore -->
+						{% include "components/home_list_display.html" with games=top_playing_now list_name="Favorite Games" %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		{% include "components/footer.html" %}
+
+		<!-- Sidebar -->
+		{% include "components/sidebar.html" %}
+	</body>
+</html>
