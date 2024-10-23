@@ -31,6 +31,7 @@ jobs:
         run: 
           pip install -r requirements.txt
           npm ci
+          npx cypress install
 
       - name: Run local server
         run: |
