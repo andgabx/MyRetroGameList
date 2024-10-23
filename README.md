@@ -37,6 +37,13 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 👾 [Website da aplicação](https://myretrogamelist.azurewebsites.net/)  
 **Observação**: Caso não esteja logado, clique no ícone de perfil no canto superior direito para ser redirecionado para a página de login.
 
+## Entrega 03
+
+📺 [Screencast da aplicação atualizada com novas histórias](https://youtu.be/E8D0Q-1321o)  
+📺 [Screencast dos testes ](https://youtu.be/zG2cg4kHTAA)  
+📺 [Screencast da aplicação](colocarlink)  
+
+
 ## Quadro do Jira
 
 ![{8D45BBBA-E719-423F-BE5F-150BF396B707}](https://github.com/user-attachments/assets/8c6e2df1-90e4-4da8-98e2-355daccffbdf)
