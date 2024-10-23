@@ -5,9 +5,10 @@ __pycache__/
 .github/
 prettier/
 migrations/
+node_modules/
 
 # Extensões
 
 *.sqlite3
 *.env
-*.yml
+*.json
