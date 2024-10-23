@@ -41,7 +41,7 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 
 📺 [Screencast da aplicação atualizada com novas histórias](https://youtu.be/E8D0Q-1321o)  
 📺 [Screencast dos testes ](https://youtu.be/zG2cg4kHTAA)  
-📺 [Screencast da aplicação](colocarlink)  
+📺 [Screencast da aplicação](https://youtu.be/q4VQdojRrRE)  
 
 
 ## Quadro do Jira
