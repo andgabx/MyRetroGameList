@@ -48,6 +48,7 @@ jobs:
           rm cypress.config.js
           rm -rf cypress
           rm -rf node_modules
+          rm db.sqlite3
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
