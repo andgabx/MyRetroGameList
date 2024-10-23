@@ -9,5 +9,4 @@ node_modules/
 
 # Extensões
 
-*.sqlite3
 *.env
