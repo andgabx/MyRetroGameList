@@ -39,9 +39,13 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 
 ## Entrega 03
 
+📝 [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=canvas&t=pEbHuGvlkHe7lVv3-0) 
 📺 [Screencast da aplicação atualizada com novas histórias](https://youtu.be/E8D0Q-1321o)  
 📺 [Screencast dos testes ](https://youtu.be/zG2cg4kHTAA)  
-📺 [Screencast da aplicação](https://youtu.be/q4VQdojRrRE)  
+📺 [Screencast da aplicação](https://youtu.be/q4VQdojRrRE)
+📜 [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
+📜 [Print do Backlog do Jira](https://imgur.com/a/sprint-2-scrum-Q8hVtsG)
+
 
 
 ## Quadro do Jira
