@@ -17,3 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.classList.add("hidden");
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    anime({
+        targets: "#usercontent",
+        translateX: [-1000, 0],
+        easing: "easeOutLinear",
+        duration: 1000,
+    });
+});

@@ -13,11 +13,11 @@
 		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
 
-	<body class="bg-neutral-950 bg-gradient min-h-screen">
+	<body class="bg-neutral-950 bg-gradient h-full">
 		{% include "components/sidebar.html" %}
 
 		<!-- Main -->
-		<div id="mainContent" class="transition-all duration-300 p-4">
+		<div id="mainContent" class="transition-all duration-300 p-4 min-h-[90vh]">
 			<div class="mx-auto max-w-7xl">
 				<!-- Row de perfil -->
 				<div id="usercontent" class="grid md:grid-cols-3 gap-8 my-8">
@@ -97,23 +97,10 @@
 				</div>
 			</div>
 		</div>
-		{% endif %}
-
-		<script>
-			// Abre o modal de edição de descrição
-			document.getElementById("editDescriptionBtn").addEventListener("click", function () {
-				document.getElementById("descriptionModal").classList.remove("hidden");
-			});
-
-			// Fecha o modal
-			document.getElementById("cancelBtn").addEventListener("click", function () {
-				document.getElementById("descriptionModal").classList.add("hidden");
-			});
-		</script>
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-
 		<!-- Script para abrir e fechar o modal -->
 		<script src="{% static 'page_scripts/edit_profile.js' %}"></script>
+		{% endif %}
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 	</body>
 </html>

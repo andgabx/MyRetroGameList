@@ -1,12 +1,15 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 from django.views import View
-from .models import Profile, Game
+from .models import Profile, Game, GameRating
+from django.db.models import Avg
 
 ##############################
 # Cadastro de novos usuários #
@@ -209,6 +212,63 @@ class GameListView(View):
         }
         return render(request, "gamelist.html", context)
     
+################
+#   Game Page  #
+################
+
+class GamePageView(View):
+    def get(self, request, game_id):
+        game = get_object_or_404(Game, id=game_id)
+        ratings = GameRating.objects.filter(game=game)
+        average_rating = ratings.aggregate(Avg('rating'))['rating__avg'] or 0
+
+        context = {
+            'game': game,
+            'ratings': ratings,
+            'average_rating': round(average_rating, 1),
+        }
+        return render(request, "gamepage.html", context)
+
+@method_decorator(login_required, name='dispatch')
+class AddReviewView(View):
+    def post(self, request, game_id):
+        game = get_object_or_404(Game, id=game_id)
+        rating_value = request.POST.get('rating')
+        comentario = request.POST.get('comentario')
+
+        if rating_value and comentario:
+            GameRating.objects.create(
+                game=game,
+                user=request.user,
+                rating=int(rating_value),
+                comentario=comentario
+            )
+        
+        return redirect('gamepage', game_id=game.id)
+
+@method_decorator(login_required, name='dispatch')
+class DeleteReview(View):
+    def post(self, request, review_id):
+        review = get_object_or_404(GameRating, id=review_id, user=request.user)
+        review.delete()
+        return redirect('gamepage', game_id=review.game.id)
+
+@method_decorator(login_required, name='dispatch')
+class EditReview(View):
+    def post(self, request, review_id):
+    
+        review = get_object_or_404(GameRating, id=review_id, user=request.user)
+        
+        new_rating = request.POST.get('rating')
+        new_comment = request.POST.get('comentario')
+
+        if new_rating and new_comment:
+            review.rating = int(new_rating)
+            review.comentario = new_comment
+            review.save()
+        return redirect('gamepage', game_id=review.game.id)
+
+
 
 
 ################

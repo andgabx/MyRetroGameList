@@ -3,7 +3,10 @@
 	<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 		{% for game in games %}
 		<div class="bg-gray-800 rounded">
-			<img src="{{ game.image_url }}" alt="{{ game.title }}" width="368" height="172" class="w-368 h-172 object-contain rounded" />
+			<a class=" " href="{% url 'gamepage' game_id=game.id %}">
+				<img src="{{ game.image_url }}" alt="{{ game.title }}" width="368" height="172" class="w-368 h-172 object-contain rounded" />
+			</a>
+			
 			<div class="p-2">
 				<h3 class="text-white text-lg">{{ game.title }}</h3>
 				<p class="text-gray-400">{{ game.genre }}</p>

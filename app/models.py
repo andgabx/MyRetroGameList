@@ -79,15 +79,13 @@ class Profile(models.Model):
 
 # Modelo que permite aos usuários avaliarem os jogos
 class GameRating(models.Model):
-
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)  # Relaciona a avaliação a um usuário
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)  # Relaciona a avaliação a um jogo
-    rating = models.IntegerField()  # Avaliação (nota) do jogo pelo usuário
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField()
+    comentario = models.TextField(blank=True, null=True)  # Adiciona o campo comentario
 
     class Meta:
-        # Assegura que um usuário só pode avaliar um jogo uma vez
         unique_together = ('user', 'game')
-
+    
     def __str__(self):
-        # Retorna uma string que exibe o nome do usuário, o jogo e a avaliação
-        return f'{self.user.username} - {self.game.nome} - {self.rating}'
+        return f'{self.user.username} - {self.game.title} - {self.rating}'

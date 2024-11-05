@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from app.views import HomeView, LoginView, ExternalUserProfileDisplayView, RegisterView, ManageGameRemovalView, ManageGameAdditionView, GameListView, LogoutView, EditProfileDescriptionView
+from app.views import HomeView, LoginView, ExternalUserProfileDisplayView, RegisterView, ManageGameRemovalView, ManageGameAdditionView, GameListView, LogoutView, EditProfileDescriptionView, GamePageView, AddReviewView, DeleteReview, EditReview
 
 urlpatterns = [
     # Admin
@@ -29,5 +29,13 @@ urlpatterns = [
     # Game addition and removal (debug for now)
     path('game/add/<str:action>/<int:id>/', ManageGameAdditionView.as_view(), name='manage_game_addition'),
     path('game/remove/<str:action>/<int:id>/', ManageGameRemovalView.as_view(), name='manage_game_removal'),
+
+    # Game page view
+    path('gamepage/<int:game_id>/', GamePageView.as_view(), name='gamepage'), 
+    path('gamepage/<int:game_id>/review/', AddReviewView.as_view(), name='add_review'),
+    path('game/<int:review_id>/delete_review/', DeleteReview.as_view(), name='delete_review'),
+    path('game/<int:review_id>/edit_review/', EditReview.as_view(), name='edit_review'),  
+
+
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
