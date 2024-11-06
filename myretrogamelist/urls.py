@@ -3,7 +3,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from app.views import HomeView, LoginView, ExternalUserProfileDisplayView, RegisterView, ManageGameRemovalView, ManageGameAdditionView, GameListView, LogoutView, EditProfileDescriptionView, GamePageView, AddReviewView, DeleteReview, EditReview
+from app.views import (
+    HomeView, LoginView, ExternalUserProfileDisplayView, RegisterView, 
+    ManageGameRemovalView, ManageGameAdditionView, GameListView, LogoutView, 
+    EditProfileDescriptionView, GamePageView, AddReviewView, DeleteReview, 
+    EditReview, ForumListView, ForumDetailView, AddQuestionView, AddAnswerView  
+)
+
 
 urlpatterns = [
     # Admin
@@ -34,7 +40,13 @@ urlpatterns = [
     path('gamepage/<int:game_id>/', GamePageView.as_view(), name='gamepage'), 
     path('gamepage/<int:game_id>/review/', AddReviewView.as_view(), name='add_review'),
     path('game/<int:review_id>/delete_review/', DeleteReview.as_view(), name='delete_review'),
-    path('game/<int:review_id>/edit_review/', EditReview.as_view(), name='edit_review'),  
+    path('game/<int:review_id>/edit_review/', EditReview.as_view(), name='edit_review'),
+
+    #forum  
+    path('forum/', ForumListView.as_view(), name='forum_list'),  
+    path('forum/<int:forum_id>/', ForumDetailView.as_view(), name='forum_detail'),  
+    path('forum/<int:forum_id>/add-question/', AddQuestionView.as_view(), name='add_question'), 
+    path('question/<int:question_id>/add-answer/', AddAnswerView.as_view(), name='add_answer'),
 
 
     

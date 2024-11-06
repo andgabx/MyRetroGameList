@@ -12,10 +12,11 @@
         <div>
             <div class="flex md:!justify-start justify-between">
                 <h2 class="text-xl font-bold text-white">{{ game.title }}</h2>
-                <!-- Favorite Button -->
-                <form id="favorite-form-{{ game.id }}" method="POST" action="{% url 'manage_game_addition' action='toggle_favorite' id=game.id %}">
+                
+                <!-- Botão de Favorito com JavaScript -->
+                <form id="favorite-form-{{ game.id }}" method="POST" action="{% url 'manage_game_addition' action='add_to_favorite_list' id=game.id %}" class="favorite-form">
                     {% csrf_token %}
-                    <button type="submit" class="px-2 h-8 w-8" aria-label="Toggle Favorite">
+                    <button type="button" class="px-2 h-8 w-8 toggle-favorite-btn" data-game-id="{{ game.id }}" aria-label="Toggle Favorite">
                         {% if game in request.user.profile.favorite_list.all %}
                         <i class="bi bi-star-fill text-yellow-400"></i>
                         {% else %}
@@ -29,16 +30,16 @@
 
         <!-- Coluna 3 - Botões -->
         <div class="flex flex-col space-y-2 h-full">
-            <!-- Formulário para adicionar o jogo à lista "Já joguei" -->
-            <form method="POST" action="{% url 'manage_game_addition' action='add_to_already_played' id=game.id %}" class="flex-grow">
+            <!-- Botão "Já Joguei" com Redirecionamento -->
+            <form id="already-played-form-{{ game.id }}" method="POST" action="{% url 'manage_game_addition' action='add_to_already_played' id=game.id %}" class="already-played-form">
                 {% csrf_token %}
-                <button type="submit" class="flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold p-2 rounded w-full h-full" aria-label="Add to Already Played" data-action="add_to_already_played" data-game-id="{{ game.id }}">Already played</button>
+                <button type="button" class="flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold p-2 rounded w-full h-full toggle-already-played-btn" data-game-id="{{ game.id }}" aria-label="Add to Already Played">Already played</button>
             </form>
         
-            <!-- Formulário para adicionar o jogo à lista "Quero jogar" -->
-            <form method="POST" action="{% url 'manage_game_addition' action='add_to_to_play' id=game.id %}" class="flex-grow">
+            <!-- Botão "Quero Jogar" com Redirecionamento -->
+            <form id="want-to-play-form-{{ game.id }}" method="POST" action="{% url 'manage_game_addition' action='add_to_to_play' id=game.id %}" class="want-to-play-form">
                 {% csrf_token %}
-                <button type="submit" class="flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold p-2 rounded w-full h-full" aria-label="Add to Want to Play" data-action="add_to_to_play" data-game-id="{{ game.id }}">I want to play</button>
+                <button type="button" class="flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold p-2 rounded w-full h-full toggle-want-to-play-btn" data-game-id="{{ game.id }}" aria-label="Add to Want to Play">I want to play</button>
             </form>
         </div>        
     </div>    
@@ -52,3 +53,117 @@
     </div>
 </div>
 {% endif %}
+
+<!-- JavaScript para Gerenciamento do Favorito e Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script>
+    function showNotification(message) {
+        const modal = document.getElementById("notification-modal");
+        const notificationMessage = document.getElementById("notification-message");
+
+        // Define a mensagem e exibe o modal
+        notificationMessage.innerText = message;
+        modal.classList.remove("hidden");
+
+        // Animação de entrada com Anime.js
+        anime({
+            targets: "#modal-content",
+            scale: [0.8, 1],
+            opacity: [0, 1],
+            duration: 500,
+            easing: 'easeOutExpo'
+        });
+
+        // Oculta o modal após 2 segundos
+        setTimeout(() => {
+            anime({
+                targets: "#modal-content",
+                scale: [1, 0.8],
+                opacity: [1, 0],
+                duration: 500,
+                easing: 'easeInExpo',
+                complete: () => {
+                    modal.classList.add("hidden");
+                }
+            });
+        }, 2000);
+    }
+
+    // Função para tratar os botões de favoritos e exibir o modal
+    document.querySelectorAll('.toggle-favorite-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const gameId = this.dataset.gameId;
+            const form = document.getElementById(`favorite-form-${gameId}`);
+            const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            fetch(form.action, {
+                method: 'POST',
+                headers: { 'X-CSRFToken': csrfToken },
+                body: new FormData(form)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const icon = button.querySelector('i');
+                    icon.classList.toggle('bi-star');
+                    icon.classList.toggle('bi-star-fill');
+                    icon.classList.toggle('text-yellow-400');
+                    icon.classList.toggle('text-gray-300');
+                    const message = icon.classList.contains('bi-star-fill') ? "Added to Favorites!" : "Removed from Favorites!";
+                    showNotification(message);
+                }
+            });
+        });
+    });
+
+    // Função para tratar o botão "Já Joguei" e exibir o modal
+    document.querySelectorAll('.toggle-already-played-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const gameId = this.dataset.gameId;
+            const form = document.getElementById(`already-played-form-${gameId}`);
+            const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            fetch(form.action, {
+                method: 'POST',
+                headers: { 'X-CSRFToken': csrfToken },
+                body: new FormData(form)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const message = data.added ? "Added to Already Played!" : "Removed from Already Played!";
+                    showNotification(message);
+                }
+            });
+        });
+    });
+
+    // Função para tratar o botão "Quero Jogar" e exibir o modal
+    document.querySelectorAll('.toggle-want-to-play-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const gameId = this.dataset.gameId;
+            const form = document.getElementById(`want-to-play-form-${gameId}`);
+            const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            fetch(form.action, {
+                method: 'POST',
+                headers: { 'X-CSRFToken': csrfToken },
+                body: new FormData(form)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const message = data.added ? "Added to Want to Play!" : "Removed from Want to Play!";
+                    showNotification(message);
+                }
+            });
+        });
+    });
+</script>
+
+<!-- Modal de Notificação -->
+<div id="notification-modal" class="fixed inset-0 flex items-center justify-center bg-opacity-50 bg-black hidden">
+    <div id="modal-content" class="bg-purple-500 text-white p-6 rounded-lg shadow-lg text-center max-w-sm mx-auto">
+        <p id="notification-message" class="text-lg font-semibold">Game added to your list!</p>
+    </div>
+</div>

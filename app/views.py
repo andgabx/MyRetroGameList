@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views import View
-from .models import Profile, Game, GameRating
+from .models import Profile, Game, GameRating, Forum, Question, Answer
 from django.db.models import Avg
 
 ##############################
@@ -154,30 +154,36 @@ class ManageGameAdditionView(View):
         game = get_object_or_404(Game, id=id)
         profile, created = Profile.objects.get_or_create(user=request.user)
 
-        if action == 'add_to_playing_now':
-            profile.playing_now.add(game)
-            return redirect('gamelist')
-
-        elif action == 'add_to_to_play':
-            profile.to_play.add(game)
-            return redirect('gamelist')
+        # Verifica a ação e alterna o status
+        if action == 'add_to_favorite_list':
+            if game in profile.favorite_list.all():
+                profile.favorite_list.remove(game)
+                added = False
+            else:
+                profile.favorite_list.add(game)
+                added = True
+            return JsonResponse({'success': True, 'added': added})
 
         elif action == 'add_to_already_played':
-            profile.already_played.add(game)
-            return redirect('gamelist')
+            if game in profile.already_played.all():
+                profile.already_played.remove(game)
+                added = False
+            else:
+                profile.already_played.add(game)
+                added = True
+            return JsonResponse({'success': True, 'added': added})
 
-        elif action == 'add_to_favorite_list':
-            profile.favorite_list.add(game)
-            return redirect('gamelist')
+        elif action == 'add_to_to_play':
+            if game in profile.to_play.all():
+                profile.to_play.remove(game)
+                added = False
+            else:
+                profile.to_play.add(game)
+                added = True
+            return JsonResponse({'success': True, 'added': added})
 
-        elif action == 'remove_from_favorite_list':
-            profile.favorite_list.remove(game)
-            return redirect('gamelist')
-
-        else:
-            messages.error(request, 'Invalid action.')
-            return redirect('gamelist')
-        
+        # Retorno para outras ações inválidas
+        return JsonResponse({'success': False})
 
 
 ####################
@@ -268,6 +274,63 @@ class EditReview(View):
             review.save()
         return redirect('gamepage', game_id=review.game.id)
 
+################
+#   Forum  #
+################
+from django.shortcuts import render
+from .models import Game, Forum  # Certifique-se de que os modelos estão corretos
+
+class ForumListView(View):
+    def get(self, request):
+        games = Game.objects.all()  # Supondo que 'Game' seja o modelo para jogos
+        forums = Forum.objects.all()  # Supondo que 'Forum' seja o modelo para fóruns
+
+        context = {
+            'games': games,
+            'forums': forums,
+        }
+        return render(request, 'forum_list.html', context)
+
+
+
+
+class ForumDetailView(View):
+    def get(self, request, forum_id):
+        forum = get_object_or_404(Forum, id=forum_id)
+        questions = forum.question_set.all()
+        return render(request, 'forum_detail.html', {'forum': forum, 'questions': questions})
+
+class AddQuestionView(LoginRequiredMixin, View):
+    login_url = '/home/'
+
+    def post(self, request, forum_id):
+        forum = get_object_or_404(Forum, id=forum_id)
+        title = request.POST.get('title')
+        details = request.POST.get('details')
+
+        if title and details:
+            question = Question(forum=forum, title=title, details=details, username=request.user)
+            question.save()
+        else:
+            messages.error(request, "preencha todos os campos.")
+
+        return redirect('forum_detail', forum_id=forum.id)
+
+class AddAnswerView(LoginRequiredMixin, View):
+    login_url = '/home/'
+
+    def post(self, request, question_id):
+        question = get_object_or_404(Question, id=question_id)
+        text = request.POST.get('text')
+
+        if text:
+            answer = Answer(question=question, text=text, username=request.user)
+            answer.save()
+        else:
+            messages.error(request, "Digite algo.")
+
+        return redirect('forum_detail', forum_id=question.forum.id)
+    
 
 
 
