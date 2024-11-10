@@ -29,7 +29,13 @@
                     {% endif %}
                 </div>
                 <div class="w-full lg:w-2/3">
-                    <h1 class="text-4xl font-bold text-white py-2">{{ game.title }}</h1>
+                    <div class="flex items-center space-x-4">
+                        <h1 class="text-4xl font-bold text-white py-2">{{ game.title }}</h1>
+                        <!-- Botão para ir ao fórum do jogo -->
+                        <a href="{% url 'forum_detail' game.forum.id %}" class="bg-purple-700 text-white p-2 rounded-xl hover:bg-purple-800 hover:scale-110 transition duration-300" title="Go to game forum">
+                            <i class="bi bi-chat-dots text-xl"></i>
+                        </a>
+                    </div>
                     <p class="text-gray-400 text-sm mb-4">Genre: {{ game.genre }} | Release Date: {{ game.release_date }}</p>
                     <p class="text-gray-300 mb-4">{{ game.description }}</p>
                     <div class="flex items-center my-auto space-x-2">
@@ -139,7 +145,6 @@
 <!-- Scripts para controlar o modal -->
 <script>
     function openEditModal(reviewId, rating, comentario) {
-
         document.getElementById('modalRating').value = rating;
         document.getElementById('modalComentario').value = comentario;
         
@@ -153,9 +158,6 @@
         document.getElementById('editReviewModal').classList.add('hidden');
     }
 </script>
-
-
-
 
             </section>
         </div>
