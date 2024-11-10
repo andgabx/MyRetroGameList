@@ -332,6 +332,37 @@ class AddAnswerView(LoginRequiredMixin, View):
         return redirect('forum_detail', forum_id=question.forum.id)
     
 
+class GameDetailView(View):
+    def get(self, request, game_id):
+        game = get_object_or_404(Game, id=game_id)
+        ratings = GameRating.objects.filter(game=game)
+        average_rating = ratings.aggregate(Avg('rating'))['rating__avg'] or 0
+
+        context = {
+            'game': game,
+            'ratings': ratings,
+            'average_rating': round(average_rating, 1),
+        }
+        
+        return render(request, 'gamepage.html', context)
+    
+
+
+class GameSearch(View):
+    def get(self, request):
+        query = request.GET.get('q')
+        games = Game.objects.all()
+        
+        if query:
+            # Filtra os jogos pelo nome, ignorando maiúsculas e minúsculas
+            games = games.filter(title__icontains=query)
+        
+        context = {
+            'games': games,
+            'query': query,
+        }
+        return render(request, 'game_search_results.html', context)
+    
 
 
 ################

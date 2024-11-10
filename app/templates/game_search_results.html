@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Search Results - GameList</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/game_search_results.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/gamelist.css' %}" />
+</head>
+<body id="mainContent" class="bg-neutral-950 bg-gradient min-h-screen h-full">
+    <!-- Header -->
+    {% include "components/header.html" %}
+
+    <main class="min-h-[80vh]">
+        <div class="container mx-auto px-6 md:px-36">
+            <h2 class="text-2xl font-bold text-white py-6">Search Results for "{{ query }}"</h2>
+
+            <!-- Resultados da busca -->
+            <section class="space-y-8">
+                {% if games %}
+                    <ul class="space-y-4">
+                        {% for game in games %}
+                            <li class="p-4 rounded">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-1/3 lg:w-1/5">
+                                        {% if game.image_url %}
+                                            <!-- Link around the game image -->
+                                            <a href="{% url 'game_details' game.id %}">
+                                                <img src="{{ game.image_url }}" alt="{{ game.title }}" class="hover:scale-[102%] transition duration-400 ease-in-out transform rounded w-full">
+                                            </a>
+                                        {% else %}
+                                            <div class="w-full h-32 bg-gray-600 flex items-center justify-center rounded">No Image</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="w-2/3 lg:w-4/5">
+                                        <!-- Link around the game title -->
+                                        <a href="{% url 'game_details' game.id %}">
+                                            <h3 class="text-xl text-white font-semibold">{{ game.title }}</h3>
+                                        </a>
+                                        <p class="text-gray-400">{{ game.genre }} | Released: {{ game.release_date }}</p>
+                                        <p class="text-gray-300 mt-2">{{ game.description|truncatewords:20 }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-gray-400">No games found for "{{ query }}".</p>
+                {% endif %}
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    {% include "components/footer.html" %}
+
+    <!-- Sidebar -->
+    {% include "components/sidebar.html" %}
+</body>
+</html>

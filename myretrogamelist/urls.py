@@ -7,7 +7,7 @@ from app.views import (
     HomeView, LoginView, ExternalUserProfileDisplayView, RegisterView, 
     ManageGameRemovalView, ManageGameAdditionView, GameListView, LogoutView, 
     EditProfileDescriptionView, GamePageView, AddReviewView, DeleteReview, 
-    EditReview, ForumListView, ForumDetailView, AddQuestionView, AddAnswerView  
+    EditReview, ForumListView, ForumDetailView, AddQuestionView, AddAnswerView, GameDetailView, GameSearch
 )
 
 
@@ -47,6 +47,9 @@ urlpatterns = [
     path('forum/<int:forum_id>/', ForumDetailView.as_view(), name='forum_detail'),  
     path('forum/<int:forum_id>/add-question/', AddQuestionView.as_view(), name='add_question'), 
     path('question/<int:question_id>/add-answer/', AddAnswerView.as_view(), name='add_answer'),
+
+path('search/', GameSearch.as_view(), name='game_search'),
+    path('game/<int:game_id>/', GameDetailView.as_view(), name='game_details'),
 
 
     
