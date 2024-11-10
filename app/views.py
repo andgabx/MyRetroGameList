@@ -11,6 +11,7 @@ from django.views import View
 from .models import Profile, Game, GameRating, Forum, Question, Answer
 from django.db.models import Avg
 
+
 ##############################
 # Cadastro de novos usuários #
 ##############################
@@ -290,10 +291,7 @@ class ForumListView(View):
             'forums': forums,
         }
         return render(request, 'forum_list.html', context)
-
-
-
-
+    
 class ForumDetailView(View):
     def get(self, request, forum_id):
         forum = get_object_or_404(Forum, id=forum_id)
@@ -330,7 +328,55 @@ class AddAnswerView(LoginRequiredMixin, View):
             messages.error(request, "Digite algo.")
 
         return redirect('forum_detail', forum_id=question.forum.id)
-    
+
+
+class EditQuestionView(LoginRequiredMixin, View):
+    login_url = '/login/'
+
+    def get(self, request, forum_id, question_id):
+        question = get_object_or_404(Question, id=question_id)
+        if question.username != request.user:
+            messages.error(request, "You do not have permission to edit this question.")
+            return redirect('forum_detail', forum_id=forum_id)
+        return render(request, 'forum_detail.html', {'edit_question': question})
+
+    def post(self, request, forum_id, question_id):
+        question = get_object_or_404(Question, id=question_id)
+        if question.username == request.user:
+            question.title = request.POST.get('title')
+            question.details = request.POST.get('details')
+            question.save()
+        return redirect('forum_detail', forum_id=forum_id)
+
+
+class EditAnswerView(LoginRequiredMixin, View):
+    login_url = '/login/'
+
+    def get(self, request, forum_id, answer_id):
+        answer = get_object_or_404(Answer, id=answer_id)
+        if answer.username != request.user:
+            messages.error(request, "You do not have permission to edit this answer.")
+            return redirect('forum_detail', forum_id=forum_id)
+        return render(request, 'forum_detail.html', {'edit_answer': answer})
+
+    def post(self, request, forum_id, answer_id):
+        answer = get_object_or_404(Answer, id=answer_id)
+        if answer.username == request.user:
+            answer.text = request.POST.get('text')
+            answer.save()
+        return redirect('forum_detail', forum_id=forum_id)
+class DeleteQuestionView(View):
+    def get(self, request, question_id):
+        question = get_object_or_404(Question, id=question_id)
+        forum_id = question.forum.id
+        question.delete()
+        return redirect('forum_detail', forum_id=forum_id)
+class DeleteAnswerView(View):
+    def get(self, request, answer_id):
+        answer = get_object_or_404(Answer, id=answer_id)
+        forum_id = answer.question.forum.id
+        answer.delete()
+        return redirect('forum_detail', forum_id=forum_id)
 
 class GameDetailView(View):
     def get(self, request, game_id):

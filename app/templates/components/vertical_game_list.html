@@ -13,7 +13,6 @@
             <div class="flex md:!justify-start justify-between">
                 <h2 class="text-xl font-bold text-white">{{ game.title }}</h2>
                 
-                <!-- Botão de Favorito com JavaScript -->
                 <form id="favorite-form-{{ game.id }}" method="POST" action="{% url 'manage_game_addition' action='add_to_favorite_list' id=game.id %}" class="favorite-form">
                     {% csrf_token %}
                     <button type="button" class="px-2 h-8 w-8 toggle-favorite-btn" data-game-id="{{ game.id }}" aria-label="Toggle Favorite">
@@ -28,15 +27,12 @@
             <p class="mt-2 text-sm text-gray-300">{{ game.description }}</p>
         </div>
 
-        <!-- Coluna 3 - Botões -->
         <div class="flex flex-col space-y-2 h-full">
-            <!-- Botão "Já Joguei" com Redirecionamento -->
             <form id="already-played-form-{{ game.id }}" method="POST" action="{% url 'manage_game_addition' action='add_to_already_played' id=game.id %}" class="already-played-form">
                 {% csrf_token %}
                 <button type="button" class="flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold p-2 rounded w-full h-full toggle-already-played-btn" data-game-id="{{ game.id }}" aria-label="Add to Already Played">Already played</button>
             </form>
         
-            <!-- Botão "Quero Jogar" com Redirecionamento -->
             <form id="want-to-play-form-{{ game.id }}" method="POST" action="{% url 'manage_game_addition' action='add_to_to_play' id=game.id %}" class="want-to-play-form">
                 {% csrf_token %}
                 <button type="button" class="flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold p-2 rounded w-full h-full toggle-want-to-play-btn" data-game-id="{{ game.id }}" aria-label="Add to Want to Play">I want to play</button>
@@ -54,42 +50,37 @@
 </div>
 {% endif %}
 
-<!-- JavaScript para Gerenciamento do Favorito e Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script>
     function showNotification(message) {
         const modal = document.getElementById("notification-modal");
         const notificationMessage = document.getElementById("notification-message");
 
-        // Define a mensagem e exibe o modal
         notificationMessage.innerText = message;
         modal.classList.remove("hidden");
 
-        // Animação de entrada com Anime.js
         anime({
             targets: "#modal-content",
             scale: [0.8, 1],
             opacity: [0, 1],
-            duration: 500,
+            duration: 200,
             easing: 'easeOutExpo'
         });
 
-        // Oculta o modal após 2 segundos
         setTimeout(() => {
             anime({
                 targets: "#modal-content",
                 scale: [1, 0.8],
                 opacity: [1, 0],
-                duration: 500,
+                duration: 200,
                 easing: 'easeInExpo',
                 complete: () => {
                     modal.classList.add("hidden");
                 }
             });
-        }, 2000);
+        }, 700);
     }
 
-    // Função para tratar os botões de favoritos e exibir o modal
     document.querySelectorAll('.toggle-favorite-btn').forEach(button => {
         button.addEventListener('click', function () {
             const gameId = this.dataset.gameId;
