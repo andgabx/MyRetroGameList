@@ -49,11 +49,8 @@
                     <strong class="text-xl text-white font-semibold">{{ question.title }}</strong>
                     <p class="text-white mt-1">{{ question.details }}</p>
                     <p class="text-white text-sm">Posted by <em>{{ question.username }}</em> - {{ question.created_date|timesince }} ago</p>
-
-                    {% if question.username.username == user.username %}
-                    <!-- View Responses Button -->
                     <button onclick="toggleResponses('responses_{{ question.id }}')" class="text-blue-500 mt-2 mr-2">View Responses</button>
-
+                    {% if question.username.username == user.username %}
                     <!-- Edit Button for Question -->
                     <button onclick="openEditQuestionModal('{{ question.id }}', '{{ question.title }}', '{{ question.details }}')" class="text-yellow-500 hover:text-yellow-700 mt-2 mx-2">Edit</button>
 
