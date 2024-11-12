@@ -46,7 +46,18 @@ O objetivo do MyRetroGameList é criar uma plataforma fechada, onde a lista de j
 📜 [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
 📜 [Print do Backlog do Jira](https://imgur.com/a/sprint-2-scrum-Q8hVtsG)
 
+## Entrega 04
 
+📝 [Design no Figma](https://www.figma.com/design/0WnLW2Hz75WAek2StUXYcF/Untitled?node-id=0-1&node-type=canvas&t=pEbHuGvlkHe7lVv3-0) 
+📺 [Screencast dos testes (E2E)](https://youtu.be/Sw6NJdVoVbo)
+📺 [Screencast Build, Deploy e testes](https://youtu.be/aOSapj31GsU)
+📺 [Screencast Deploy](https://drive.google.com/file/d/10lybVqerX2oqpgLk7XYNWgSsNM3FfWdL/view?usp=sharing)
+📺 [Screencast Lo-Fi](https://drive.google.com/file/d/1rXv7RkJtcw1apZu7hlHvtpJKdn5bRY8E/view?usp=sharing)
+📜 [Pipeline Build, Deploy e Testes](https://github.com/filipe-ms/myretrogamelist/actions/workflows/prod_myretrogamelist.yml)
+📜 [Print Issue/bug tracker](https://imgur.com/a/EGVD37i)
+📜 [Backlog do Jira](https://myretrogamelist.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
+📜 [Print do Backlog do Jira](https://imgur.com/a/csgi3Nc)
+📜 [Contributing.md](https://github.com/andgabx/MyRetroGameList/blob/main/CONTRUBUTING.md)
 
 ## Quadro do Jira
 
